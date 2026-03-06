@@ -1,6 +1,258 @@
+{% doc %}
+  @prompt
+    text pill
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-text-pill-{{ ai_gen_id }} {
+    display: inline-block;
+    padding: {{ block.settings.padding_vertical }}px {{ block.settings.padding_horizontal }}px;
+    background-color: {{ block.settings.background_color }};
+    color: {{ block.settings.text_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    font-size: {{ block.settings.font_size }}px;
+    font-weight: {{ block.settings.font_weight }};
+    text-align: center;
+    border: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+    transition: all 0.3s ease;
+    text-decoration: none;
+    cursor: {% if block.settings.pill_link != blank %}pointer{% else %}default{% endif %};
+  }
+
+  .ai-text-pill-{{ ai_gen_id }}:hover {
+    {% if block.settings.pill_link != blank %}
+      background-color: {{ block.settings.hover_background_color }};
+      color: {{ block.settings.hover_text_color }};
+      border-color: {{ block.settings.hover_border_color }};
+    {% endif %}
+  }
+
+  .ai-text-pill-container-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: {{ block.settings.alignment }};
+    width: {{ block.settings.desktop_width_percent }}%;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-text-pill-container-{{ ai_gen_id }} {
+      justify-content: {{ block.settings.mobile_alignment }};
+    }
+  }
+{% endstyle %}
+
+<div class="ai-text-pill-container-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.pill_link != blank %}
+    <a href="{{ block.settings.pill_link }}" class="ai-text-pill-{{ ai_gen_id }}">
+      {{ block.settings.pill_text }}
+    </a>
+  {% else %}
+    <span class="ai-text-pill-{{ ai_gen_id }}">
+      {{ block.settings.pill_text }}
+    </span>
+  {% endif %}
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Text pill",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "pill_text",
+      "label": "Text",
+      "default": "New arrival"
+    },
+    {
+      "type": "url",
+      "id": "pill_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Desktop alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "mobile_alignment",
+      "label": "Mobile alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "label": "Vertical padding",
+      "min": 2,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "label": "Border width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Hover colors"
+    },
+    {
+      "type": "color",
+      "id": "hover_background_color",
+      "label": "Background",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "hover_text_color",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "hover_border_color",
+      "label": "Border",
+      "default": "#333333"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text pill"
+    }
+  ]
+}
 {% endschema %}

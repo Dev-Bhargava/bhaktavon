@@ -1,0 +1,185 @@
+{% schema %}
+{
+  "name": "Why Sea Buckthorn Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Why Sea Buckthorn?"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "One of nature's most nutrient-dense superfruits, backed by centuries of traditional use and modern science."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Benefit Card",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "icon_svg",
+          "label": "Icon SVG (inline SVG path only)",
+          "default": "<path d='M12 2L3 5v6c0 5 3 9 9 11 6-2 9-6 9-11V5l-9-3z'></path>"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title",
+          "default": "Immune Support"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Rich in Vitamin C and antioxidants to strengthen your natural defenses."
+        },
+        {
+          "type": "text",
+          "id": "stat_number",
+          "label": "Stat Number",
+          "default": "15x"
+        },
+        {
+          "type": "text",
+          "id": "stat_label",
+          "label": "Stat Label",
+          "default": "Vitamin C vs. oranges"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Why Sea Buckthorn"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .wsb-section {
+    max-width: 1120px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3rem 1.5rem;
+    background-color: #ffffff;
+    text-align: center;
+  }
+  .wsb-heading {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1rem;
+  }
+  .wsb-subheading {
+    color: #4b5563;
+    margin-bottom: 2.5rem;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .wsb-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  @media (min-width: 640px) {
+    .wsb-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 768px) {
+    .wsb-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .wsb-card {
+    background-color: #f9fafb;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .wsb-icon-wrapper {
+    background-color: #fb923c;
+    color: white;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .wsb-icon-wrapper svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    stroke-width: 2;
+  }
+  .wsb-card-title {
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: #111827;
+    margin-bottom: 0.5rem;
+  }
+  .wsb-card-description {
+    color: #4b5563;
+    font-size: 0.9375rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+  .wsb-divider {
+    border-top: 1px solid #e5e7eb;
+    margin-bottom: 0.75rem;
+  }
+  .wsb-stat-number {
+    color: #fb923c;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+  .wsb-stat-label {
+    color: #6b7280;
+    font-size: 0.8125rem;
+  }
+</style>
+
+<section class="wsb-section" aria-label="{{ section.settings.heading }}">
+  <h2 class="wsb-heading">{{ section.settings.heading }}</h2>
+  <p class="wsb-subheading">{{ section.settings.subheading }}</p>
+
+  <div class="wsb-grid">
+    {% for block in section.blocks %}
+      {% assign icon_svg = block.settings.icon_svg | strip_newlines %}
+      {% if block.settings.title != blank and block.settings.description != blank %}
+        <article class="wsb-card">
+          <div class="wsb-icon-wrapper" role="img" aria-label="{{ block.settings.title }} icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              {{ icon_svg | raw }}
+            </svg>
+          </div>
+          <h3 class="wsb-card-title">{{ block.settings.title }}</h3>
+          <p class="wsb-card-description">{{ block.settings.description }}</p>
+          <hr class="wsb-divider" />
+          {% if block.settings.stat_number != blank %}
+            <p class="wsb-stat-number">{{ block.settings.stat_number }}</p>
+          {% endif %}
+          {% if block.settings.stat_label != blank %}
+            <p class="wsb-stat-label">{{ block.settings.stat_label }}</p>
+          {% endif %}
+        </article>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>

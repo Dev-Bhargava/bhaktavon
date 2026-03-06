@@ -6,8 +6,369 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
+    "featured_product_information_fqmUKW": {
+      "type": "featured-product-information",
+      "blocks": {
+        "media-gallery": {
+          "type": "_featured-product-information-carousel",
+          "static": true,
+          "settings": {
+            "aspect_ratio": "adapt",
+            "constrain_to_viewport": true,
+            "media_fit": "contain",
+            "media_radius": 0,
+            "extend_media": false,
+            "zoom": true,
+            "video_loop": false,
+            "hide_variants": true,
+            "icons_style": "arrow",
+            "slideshow_controls_style": "counter",
+            "slideshow_mobile_controls_style": "dots",
+            "thumbnail_position": "bottom",
+            "thumbnail_width": 44,
+            "thumbnail_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "product-details": {
+          "type": "_product-details",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "details_position": "flex-start",
+            "gap": 28,
+            "sticky_details_desktop": true,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "group_MgqJTb": {
+              "type": "group",
+              "name": "t:names.header",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "text_Jg3i37": {
+                  "type": "text",
+                  "name": "t:names.heading",
+                  "settings": {
+                    "text": "<h1>Pure Sea Buckthorn.<br/>Real Benefits.</h1>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "text_MYj4Fi": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Science-backed wellness in every bottle. Boost immunity, support gut health, and nourish your skin naturally.</p>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "group_EWDE4T": {
+                  "type": "group",
+                  "name": "t:names.group",
+                  "settings": {
+                    "content_direction": "row",
+                    "vertical_on_mobile": true,
+                    "horizontal_alignment": "flex-start",
+                    "vertical_alignment": "center",
+                    "align_baseline": false,
+                    "horizontal_alignment_flex_direction_column": "flex-start",
+                    "vertical_alignment_flex_direction_column": "center",
+                    "gap": 12,
+                    "width": "fill",
+                    "custom_width": 100,
+                    "width_mobile": "fill",
+                    "custom_width_mobile": 100,
+                    "height": "fit",
+                    "custom_height": 100,
+                    "inherit_color_scheme": true,
+                    "color_scheme": "",
+                    "background_media": "none",
+                    "video_position": "cover",
+                    "background_image_position": "cover",
+                    "border": "none",
+                    "border_width": 1,
+                    "border_opacity": 100,
+                    "border_radius": 0,
+                    "toggle_overlay": false,
+                    "overlay_color": "#00000026",
+                    "overlay_style": "solid",
+                    "gradient_direction": "to top",
+                    "link": "",
+                    "open_in_new_tab": false,
+                    "placeholder": "",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {
+                    "ai_gen_block_3828cc0_Ax6Jkk": {
+                      "type": "ai_gen_block_3828cc0",
+                      "name": "Immunity Support",
+                      "settings": {
+                        "pill_text": "Immunity Support",
+                        "pill_link": "",
+                        "alignment": "center",
+                        "mobile_alignment": "center",
+                        "desktop_width_percent": 100,
+                        "font_size": 14,
+                        "font_weight": "500",
+                        "padding_vertical": 6,
+                        "padding_horizontal": 16,
+                        "border_radius": 20,
+                        "border_width": 1,
+                        "background_color": "#ffffff",
+                        "text_color": "#000000",
+                        "border_color": "#e6e6e6",
+                        "hover_background_color": "#ffffff",
+                        "hover_text_color": "#000000",
+                        "hover_border_color": "#e6e6e6"
+                      },
+                      "blocks": {}
+                    },
+                    "ai_gen_block_3828cc0_tXGCJj": {
+                      "type": "ai_gen_block_3828cc0",
+                      "name": "Gut Health",
+                      "disabled": true,
+                      "settings": {
+                        "pill_text": "Gut Health",
+                        "pill_link": "",
+                        "alignment": "center",
+                        "mobile_alignment": "center",
+                        "desktop_width_percent": 100,
+                        "font_size": 14,
+                        "font_weight": "500",
+                        "padding_vertical": 6,
+                        "padding_horizontal": 16,
+                        "border_radius": 20,
+                        "border_width": 1,
+                        "background_color": "#000000",
+                        "text_color": "#ffffff",
+                        "border_color": "#000000",
+                        "hover_background_color": "#333333",
+                        "hover_text_color": "#ffffff",
+                        "hover_border_color": "#333333"
+                      },
+                      "blocks": {}
+                    },
+                    "ai_gen_block_3828cc0_PTdzTC": {
+                      "type": "ai_gen_block_3828cc0",
+                      "name": "Gut Health",
+                      "disabled": true,
+                      "settings": {
+                        "pill_text": "Skin Nourishment",
+                        "pill_link": "",
+                        "alignment": "center",
+                        "mobile_alignment": "center",
+                        "desktop_width_percent": 100,
+                        "font_size": 14,
+                        "font_weight": "500",
+                        "padding_vertical": 6,
+                        "padding_horizontal": 16,
+                        "border_radius": 20,
+                        "border_width": 1,
+                        "background_color": "#000000",
+                        "text_color": "#ffffff",
+                        "border_color": "#000000",
+                        "hover_background_color": "#333333",
+                        "hover_text_color": "#ffffff",
+                        "hover_border_color": "#333333"
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "ai_gen_block_3828cc0_Ax6Jkk",
+                    "ai_gen_block_3828cc0_tXGCJj",
+                    "ai_gen_block_3828cc0_PTdzTC"
+                  ]
+                }
+              },
+              "block_order": [
+                "text_Jg3i37",
+                "text_MYj4Fi",
+                "group_EWDE4T"
+              ]
+            },
+            "review_agfg9C": {
+              "type": "review",
+              "name": "t:names.product_review_stars",
+              "settings": {
+                "stars_style": "shaded",
+                "show_number": true,
+                "rating_color": "primary",
+                "type_preset": "paragraph",
+                "width": "100%",
+                "alignment": "left"
+              },
+              "blocks": {}
+            },
+            "variant_picker_pz4XLN": {
+              "type": "variant-picker",
+              "name": "t:names.product_variant_picker",
+              "settings": {
+                "variant_style": "buttons",
+                "show_swatches": true,
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 8,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "buy_buttons_JqdPeL": {
+              "type": "buy-buttons",
+              "name": "t:names.product_buy_buttons",
+              "settings": {
+                "stacking": false,
+                "show_pickup_availability": true,
+                "gift_card_form": true,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "quantity",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                },
+                "add-to-cart": {
+                  "type": "add-to-cart",
+                  "static": true,
+                  "settings": {
+                    "style_class": "button-secondary"
+                  },
+                  "blocks": {}
+                },
+                "accelerated-checkout": {
+                  "type": "accelerated-checkout",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            }
+          },
+          "block_order": [
+            "group_MgqJTb",
+            "review_agfg9C",
+            "variant_picker_pz4XLN",
+            "buy_buttons_JqdPeL"
+          ]
+        }
+      },
+      "name": "t:names.featured_product_information",
+      "settings": {
+        "product": "",
+        "content_width": "content-center-aligned",
+        "desktop_media_position": "right",
+        "equal_columns": true,
+        "limit_details_width": false,
+        "gap": 48,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
+    },
     "hero_jVaWmY": {
       "type": "hero",
       "blocks": {
@@ -57,6 +418,7 @@
         "text_YLPk4p",
         "button_H9gpTf"
       ],
+      "disabled": true,
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
@@ -65,6 +427,7 @@
         "custom_mobile_media": false,
         "media_type_1_mobile": "image",
         "media_type_2_mobile": "image",
+        "link": "",
         "open_in_new_tab": false,
         "content_direction": "column",
         "vertical_on_mobile": true,
@@ -261,6 +624,7 @@
           ]
         }
       },
+      "disabled": true,
       "name": "Featured collection",
       "settings": {
         "collection": "all",
@@ -284,6 +648,7 @@
     }
   },
   "order": [
+    "featured_product_information_fqmUKW",
     "hero_jVaWmY",
     "product_list_fa6P9H"
   ]

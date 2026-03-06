@@ -386,13 +386,165 @@
                 "button_9AnqPK",
                 "button_fDn7LC"
               ]
+            },
+            "group_LV3qkA": {
+              "type": "group",
+              "name": "t:names.group",
+              "settings": {
+                "content_direction": "row",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "ai_gen_block_3828cc0_qLD4fk": {
+                  "type": "ai_gen_block_3828cc0",
+                  "name": "Lab Tested",
+                  "settings": {
+                    "pill_text": "Lab Tested",
+                    "pill_link": "",
+                    "alignment": "center",
+                    "mobile_alignment": "center",
+                    "desktop_width_percent": 100,
+                    "font_size": 14,
+                    "font_weight": "500",
+                    "padding_vertical": 2,
+                    "padding_horizontal": 8,
+                    "border_radius": 0,
+                    "border_width": 0,
+                    "background_color": "#ffffff",
+                    "text_color": "#000000",
+                    "border_color": "#e6e6e6",
+                    "hover_background_color": "#ffffff",
+                    "hover_text_color": "#000000",
+                    "hover_border_color": "#e6e6e6"
+                  },
+                  "blocks": {}
+                },
+                "group_eddTG6": {
+                  "type": "group",
+                  "name": "t:names.group",
+                  "settings": {
+                    "content_direction": "row",
+                    "vertical_on_mobile": true,
+                    "horizontal_alignment": "flex-start",
+                    "vertical_alignment": "center",
+                    "align_baseline": false,
+                    "horizontal_alignment_flex_direction_column": "flex-start",
+                    "vertical_alignment_flex_direction_column": "center",
+                    "gap": 12,
+                    "width": "fill",
+                    "custom_width": 100,
+                    "width_mobile": "fill",
+                    "custom_width_mobile": 100,
+                    "height": "fit",
+                    "custom_height": 100,
+                    "inherit_color_scheme": true,
+                    "color_scheme": "",
+                    "background_media": "none",
+                    "video_position": "cover",
+                    "background_image_position": "cover",
+                    "border": "none",
+                    "border_width": 1,
+                    "border_opacity": 100,
+                    "border_radius": 0,
+                    "toggle_overlay": false,
+                    "overlay_color": "#00000026",
+                    "overlay_style": "solid",
+                    "gradient_direction": "to top",
+                    "link": "",
+                    "open_in_new_tab": false,
+                    "placeholder": "",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {
+                    "icon_NFi3eq": {
+                      "type": "icon",
+                      "name": "t:names.icon",
+                      "settings": {
+                        "icon": "price_tag",
+                        "width": 24,
+                        "link": "",
+                        "open_in_new_tab": false
+                      },
+                      "blocks": {}
+                    },
+                    "ai_gen_block_3828cc0_me8ryf": {
+                      "type": "ai_gen_block_3828cc0",
+                      "name": "Text pill",
+                      "settings": {
+                        "pill_text": "New arrival",
+                        "pill_link": "",
+                        "alignment": "center",
+                        "mobile_alignment": "center",
+                        "desktop_width_percent": 100,
+                        "font_size": 14,
+                        "font_weight": "500",
+                        "padding_vertical": 2,
+                        "padding_horizontal": 8,
+                        "border_radius": 0,
+                        "border_width": 0,
+                        "background_color": "#ffffff",
+                        "text_color": "#000000",
+                        "border_color": "#ffffff",
+                        "hover_background_color": "#333333",
+                        "hover_text_color": "#ffffff",
+                        "hover_border_color": "#333333"
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "icon_NFi3eq",
+                    "ai_gen_block_3828cc0_me8ryf"
+                  ]
+                }
+              },
+              "block_order": [
+                "ai_gen_block_3828cc0_qLD4fk",
+                "group_eddTG6"
+              ]
             }
           },
           "block_order": [
             "group_MgqJTb",
             "review_agfg9C",
             "variant_picker_pz4XLN",
-            "group_timiHp"
+            "group_timiHp",
+            "group_LV3qkA"
           ]
         }
       },
@@ -407,6 +559,62 @@
         "color_scheme": "",
         "padding-block-start": 40,
         "padding-block-end": 40
+      }
+    },
+    "hp_section_2_FQRUjh": {
+      "type": "hp-section-2",
+      "blocks": {
+        "card_wYQNRK": {
+          "type": "card",
+          "settings": {
+            "icon_svg": "<path d=\"M12 2L3 5v6c0 5 3 9 9 11 6-2 9-6 9-11V5l-9-3z\"></path>",
+            "title": "Immune Support",
+            "description": "Rich in Vitamin C and antioxidants to strengthen your natural defenses.",
+            "stat_number": "15x",
+            "stat_label": "Vitamin C vs. oranges"
+          }
+        },
+        "card_B8Dma6": {
+          "type": "card",
+          "settings": {
+            "icon_svg": "<path d=\"M12 2L3 5v6c0 5 3 9 9 11 6-2 9-6 9-11V5l-9-3z\"></path>",
+            "title": "Gut Health",
+            "description": "Natural omega fatty acids support digestive wellness and nutrient absorption.",
+            "stat_number": "190+",
+            "stat_label": "Bioactive compounds"
+          }
+        },
+        "card_4tkDdy": {
+          "type": "card",
+          "settings": {
+            "icon_svg": "<path d=\"M12 2L3 5v6c0 5 3 9 9 11 6-2 9-6 9-11V5l-9-3z\"></path>",
+            "title": "Skin Nourishment",
+            "description": "Omega-7 fatty acids promote healthy, glowing skin from within.",
+            "stat_number": "100%",
+            "stat_label": "Natural ingredients"
+          }
+        },
+        "card_7PdKcR": {
+          "type": "card",
+          "settings": {
+            "icon_svg": "<path d=\"M12 2L3 5v6c0 5 3 9 9 11 6-2 9-6 9-11V5l-9-3z\"></path>",
+            "title": "Heart Health",
+            "description": "Supports cardiovascular wellness with natural plant-based nutrition.",
+            "stat_number": "0g",
+            "stat_label": "Added sugar"
+          }
+        }
+      },
+      "block_order": [
+        "card_wYQNRK",
+        "card_B8Dma6",
+        "card_4tkDdy",
+        "card_7PdKcR"
+      ],
+      "name": "Why Sea Buckthorn",
+      "settings": {
+        "heading": "Why Sea Buckthorn?",
+        "subheading": "One of nature's most nutrient-dense superfruits, backed by centuries of traditional use and modern science."
       }
     },
     "hero_jVaWmY": {
@@ -689,6 +897,7 @@
   },
   "order": [
     "featured_product_information_fqmUKW",
+    "hp_section_2_FQRUjh",
     "hero_jVaWmY",
     "product_list_fa6P9H"
   ]

@@ -577,7 +577,7 @@
         "card_B8Dma6": {
           "type": "card",
           "settings": {
-            "icon_svg": "<path d=\"M12 2L3 5v6c0 5 3 9 9 11 6-2 9-6 9-11V5l-9-3z\"></path>",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-leaf w-6 h-6 text-white\" data-fg-3hz13=\"1.18:1.6064:/src/app/components/Benefits.tsx:59:19:2235:39:e:Icon\" data-fgid-3hz13=\":r2d:\"><path d=\"M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z\"></path><path d=\"M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12\"></path></svg>",
             "title": "Gut Health",
             "description": "Natural omega fatty acids support digestive wellness and nutrient absorption.",
             "stat_number": "190+",
@@ -587,7 +587,7 @@
         "card_4tkDdy": {
           "type": "card",
           "settings": {
-            "icon_svg": "<path d=\"M12 2L3 5v6c0 5 3 9 9 11 6-2 9-6 9-11V5l-9-3z\"></path>",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-sparkles w-6 h-6 text-white\" data-fg-3hz13=\"1.18:1.6064:/src/app/components/Benefits.tsx:59:19:2235:39:e:Icon\" data-fgid-3hz13=\":r2l:\"><path d=\"M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z\"></path><path d=\"M20 3v4\"></path><path d=\"M22 5h-4\"></path><path d=\"M4 17v2\"></path><path d=\"M5 18H3\"></path></svg>",
             "title": "Skin Nourishment",
             "description": "Omega-7 fatty acids promote healthy, glowing skin from within.",
             "stat_number": "100%",
@@ -597,7 +597,7 @@
         "card_7PdKcR": {
           "type": "card",
           "settings": {
-            "icon_svg": "<path d=\"M12 2L3 5v6c0 5 3 9 9 11 6-2 9-6 9-11V5l-9-3z\"></path>",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-heart w-6 h-6 text-white\" data-fg-3hz13=\"1.18:1.6064:/src/app/components/Benefits.tsx:59:19:2235:39:e:Icon\" data-fgid-3hz13=\":r2t:\"><path d=\"M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z\"></path></svg>",
             "title": "Heart Health",
             "description": "Supports cardiovascular wellness with natural plant-based nutrition.",
             "stat_number": "0g",

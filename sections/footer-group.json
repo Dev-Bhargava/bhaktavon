@@ -171,7 +171,7 @@
               "type": "menu",
               "name": "t:names.menu",
               "settings": {
-                "menu": "main-menu",
+                "menu": "shop",
                 "heading": "Shop",
                 "menu_spacing": 8,
                 "show_as_accordion": false,
@@ -237,7 +237,7 @@
               "type": "menu",
               "name": "t:names.menu",
               "settings": {
-                "menu": "main-menu",
+                "menu": "company",
                 "heading": "Company",
                 "menu_spacing": 8,
                 "show_as_accordion": false,
@@ -303,7 +303,7 @@
               "type": "menu",
               "name": "t:names.menu",
               "settings": {
-                "menu": "main-menu",
+                "menu": "support",
                 "heading": "Support",
                 "menu_spacing": 8,
                 "show_as_accordion": false,

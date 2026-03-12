@@ -118,7 +118,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>We make things that work better and last longer. Our products solve real problems with clean design and honest materials.</p>",
+                    "text": "<p>Pure sea buckthorn juice for modern wellness. Science-backed nutrition in every bottle.</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -144,11 +144,11 @@
                   "type": "social-links",
                   "name": "t:names.social_media_links",
                   "settings": {
-                    "facebook_url": "",
-                    "instagram_url": "",
+                    "facebook_url": "#",
+                    "instagram_url": "#",
                     "youtube_url": "",
                     "tiktok_url": "",
-                    "twitter_url": "",
+                    "twitter_url": "#",
                     "threads_url": "",
                     "linkedin_url": "",
                     "bluesky_url": "",

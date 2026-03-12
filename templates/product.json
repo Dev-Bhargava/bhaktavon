@@ -261,7 +261,7 @@
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
-        "equal_columns": false,
+        "equal_columns": true,
         "limit_details_width": false,
         "gap": 48,
         "enable_sticky_add_to_cart": true,
@@ -270,150 +270,20 @@
         "padding-block-end": 0
       }
     },
-    "product_recommendations_qggXJq": {
-      "type": "product-recommendations",
-      "blocks": {
-        "text_cbcgyb": {
-          "type": "text",
-          "name": "t:names.header",
-          "settings": {
-            "text": "<h3>You may also like </h3>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h4",
-            "font": "var(--font-primary--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "static-product-card": {
-          "type": "_product-card",
-          "name": "t:names.product_card",
-          "static": true,
-          "settings": {
-            "product_card_gap": 8,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 8,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_card_gallery_DNizbJ": {
-              "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "image_ratio": "adapt",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_title_M7MJkb": {
-              "type": "product-title",
-              "name": "t:names.product_title",
-              "settings": {
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "price_gLWgA6": {
-              "type": "price",
-              "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "color": "var(--color-foreground)",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_card_gallery_DNizbJ",
-            "product_title_M7MJkb",
-            "price_gLWgA6"
-          ]
-        }
-      },
-      "block_order": [
-        "text_cbcgyb"
-      ],
-      "name": "t:names.product_recommendations",
+    "custom_liquid_JyzrQe": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
       "settings": {
-        "product": "{{ closest.product }}",
-        "recommendation_type": "related",
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "max_products": 4,
-        "columns": 4,
-        "mobile_columns": "2",
-        "columns_gap": 12,
-        "rows_gap": 24,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "page-width",
-        "gap": 28,
-        "color_scheme": "scheme-1",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "custom_liquid": "/* container */\n\n.nutrition-card{\n    max-width:1000px;\n    margin:auto;\n    background:white;\n    padding:40px;\n    border-radius:20px;\n    box-shadow:0 0 0 1px #e3e6ea inset;\n}\n\n.title{\n    font-size:32px;\n    font-weight:700;\n    margin-bottom:30px;\n}\n\n/* table */\n\ntable{\n    width:100%;\n    border-collapse:collapse;\n}\n\nth{\n    text-align:left;\n    font-size:18px;\n    padding-bottom:15px;\n    color:#333;\n}\n\ntd{\n    padding:18px 0;\n    font-size:18px;\n    color:#555;\n}\n\ntr{\n    border-top:1px solid #e6e6e6;\n}\n\n.highlight{\n    color:#ff7a2f;\n    font-weight:600;\n}\n\n.note{\n    margin-top:20px;\n    font-size:14px;\n    color:#888;\n}\n\n\n/* MOBILE DESIGN */\n\n@media(max-width:768px){\n\nbody{\n    padding:20px;\n}\n\n.nutrition-card{\n    padding:28px;\n}\n\n.title{\n    font-size:28px;\n}\n\ntable thead{\n    display:none;\n}\n\ntable, tbody, tr, td{\n    display:block;\n    width:100%;\n}\n\ntr{\n    border-top:1px solid #e6e6e6;\n    padding:16px 0;\n}\n\ntd{\n    display:flex;\n    justify-content:space-between;\n    padding:6px 0;\n}\n\ntd::before{\n    content:attr(data-label);\n    font-weight:600;\n    color:#333;\n}\n\n}\n\n</style>\n\n<div class=\"nutrition-card\">\n\n<div class=\"title\">Nutrition Information</div>\n\n<table>\n\n<thead>\n<tr>\n<th>Nutrient</th>\n<th>Per 30ml Serving</th>\n<th>% Daily Value</th>\n</tr>\n</thead>\n\n<tbody>\n\n<tr>\n<td data-label=\"Nutrient\">Calories</td>\n<td data-label=\"Per 30ml Serving\">45 kcal</td>\n<td data-label=\"% Daily Value\">2%</td>\n</tr>\n\n<tr>\n<td data-label=\"Nutrient\">Vitamin C</td>\n<td data-label=\"Per 30ml Serving\">180 mg</td>\n<td class=\"highlight\" data-label=\"% Daily Value\">200%</td>\n</tr>\n\n<tr>\n<td data-label=\"Nutrient\">Vitamin E</td>\n<td data-label=\"Per 30ml Serving\">15 mg</td>\n<td class=\"highlight\" data-label=\"% Daily Value\">100%</td>\n</tr>\n\n<tr>\n<td data-label=\"Nutrient\">Omega-7 (Palmitoleic Acid)</td>\n<td data-label=\"Per 30ml Serving\">850 mg</td>\n<td data-label=\"% Daily Value\">*</td>\n</tr>\n\n<tr>\n<td data-label=\"Nutrient\">Omega-3 & Omega-6</td>\n<td data-label=\"Per 30ml Serving\">520 mg</td>\n<td data-label=\"% Daily Value\">*</td>\n</tr>\n\n<tr>\n<td data-label=\"Nutrient\">Flavonoids</td>\n<td data-label=\"Per 30ml Serving\">95 mg</td>\n<td data-label=\"% Daily Value\">*</td>\n</tr>\n\n</tbody>\n\n</table>\n\n<div class=\"note\">* Daily Value not established</div>\n\n</div>",
+        "color_scheme": "",
+        "section_width": "full-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     }
   },
   "order": [
     "main",
-    "product_recommendations_qggXJq"
+    "custom_liquid_JyzrQe"
   ]
 }

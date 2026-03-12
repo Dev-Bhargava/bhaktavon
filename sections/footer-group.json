@@ -102,7 +102,7 @@
                     "font": "heading",
                     "unit": "pixel",
                     "percent_width": 100,
-                    "pixel_height": 48,
+                    "pixel_height": 32,
                     "custom_mobile_size": false,
                     "unit_mobile": "percent",
                     "percent_width_mobile": 100,
@@ -382,8 +382,8 @@
         "section_width": "page-width",
         "gap": 20,
         "color_scheme": "scheme-5",
-        "padding-block-start": 30,
-        "padding-block-end": 30
+        "padding-block-start": 60,
+        "padding-block-end": 60
       }
     }
   },

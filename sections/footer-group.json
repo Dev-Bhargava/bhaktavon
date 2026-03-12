@@ -413,17 +413,15 @@
                 "group_kz9waH"
               ]
             },
-            "spacer_nT6yUB": {
-              "type": "spacer",
-              "name": "t:names.spacer",
+            "divider_xJiF36": {
+              "type": "_divider",
+              "name": "t:names.divider",
               "settings": {
-                "size": "percent",
-                "percent_size": 100,
-                "pixel_size": 120,
-                "custom_mobile_size": false,
-                "size_mobile": "percent",
-                "percent_size_mobile": 100,
-                "pixel_size_mobile": 120
+                "thickness": 1,
+                "corner_radius": "square",
+                "width_percent": 100,
+                "padding-block-start": 0,
+                "padding-block-end": 0
               },
               "blocks": {}
             },
@@ -515,7 +513,7 @@
           },
           "block_order": [
             "group_Ut8d3D",
-            "spacer_nT6yUB",
+            "divider_xJiF36",
             "group_Lzkiih"
           ]
         }

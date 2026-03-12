@@ -550,7 +550,7 @@
       },
       "name": "t:names.featured_product_information",
       "settings": {
-        "product": "",
+        "product": "pure-sea-buckthorn-juice",
         "content_width": "content-center-aligned",
         "desktop_media_position": "right",
         "equal_columns": true,

@@ -636,7 +636,7 @@
           "type": "ingredient",
           "settings": {
             "name": "Sea Buckthorn Juice",
-            "value": "100%"
+            "value": "<span>100%</span>"
           }
         },
         "ingredient_cgL6G4": {

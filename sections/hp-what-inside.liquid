@@ -1,0 +1,308 @@
+{% schema %}
+{
+  "name": "What's Inside",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product Image"
+    },
+    {
+      "type": "text",
+      "id": "badge_top",
+      "label": "Top Badge",
+      "default": "500ml"
+    },
+    {
+      "type": "text",
+      "id": "badge_bottom",
+      "label": "Bottom Badge",
+      "default": "100% Pure"
+    },
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Small Tag",
+      "default": "Premium Quality"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What's Inside"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Pure, cold-pressed sea buckthorn juice with nothing added. Just the concentrated power of nature."
+    },
+    {
+      "type": "text",
+      "id": "cta1",
+      "label": "Primary Button Text",
+      "default": "Buy Now — ₹899"
+    },
+    {
+      "type": "url",
+      "id": "cta1_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "cta2",
+      "label": "Secondary Button Text",
+      "default": "View Full Nutrition"
+    },
+    {
+      "type": "url",
+      "id": "cta2_link",
+      "label": "Secondary Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient Row",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name" },
+        { "type": "text", "id": "value", "label": "Value" }
+      ]
+    },
+    {
+      "type": "stat",
+      "name": "Stat Box",
+      "settings": [
+        { "type": "text", "id": "number", "label": "Number" },
+        { "type": "text", "id": "label", "label": "Label" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "What's Inside",
+      "blocks": [
+        { "type": "ingredient", "settings": { "name": "Sea Buckthorn Juice", "value": "100%" } },
+        { "type": "ingredient", "settings": { "name": "Added Sugar", "value": "0g" } },
+        { "type": "ingredient", "settings": { "name": "Preservatives", "value": "None" } },
+        { "type": "ingredient", "settings": { "name": "Artificial Flavors", "value": "None" } },
+        { "type": "stat", "settings": { "number": "200%", "label": "Daily Vitamin C" } },
+        { "type": "stat", "settings": { "number": "Ω 3-9", "label": "Omega Fatty Acids" } },
+        { "type": "stat", "settings": { "number": "190+", "label": "Nutrients" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<section class="inside-section">
+  <div class="inside-container">
+    <div class="inside-left">
+      {% if section.settings.image %}
+        <img src="{{ section.settings.image | image_url: width: 900 }}" alt="">
+      {% endif %}
+
+      <div class="badge-top">
+        {{ section.settings.badge_top -}}
+        <br>
+        <span>Per Bottle</span>
+      </div>
+
+      <div class="badge-bottom">
+        {{ section.settings.badge_bottom }}
+      </div>
+    </div>
+
+    <div class="inside-right">
+      <span class="tag">{{ section.settings.tag }}</span>
+
+      <h2>{{ section.settings.heading }}</h2>
+
+      <p class="desc">
+        {{ section.settings.description }}
+      </p>
+
+      <div class="ingredients">
+        <h4>Key Ingredients</h4>
+
+        {% for block in section.blocks %}
+          {% if block.type == 'ingredient' %}
+            <div class="ingredient-row">
+              <span>{{ block.settings.name }}</span>
+              <span class="value">{{ block.settings.value }}</span>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="stats">
+        {% for block in section.blocks %}
+          {% if block.type == 'stat' %}
+            <div class="stat">
+              <h3>{{ block.settings.number }}</h3>
+              <p>{{ block.settings.label }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="buttons">
+        <a href="{{ section.settings.cta1_link }}" class="btn-primary">
+          {{ section.settings.cta1 }}
+        </a>
+
+        <a href="{{ section.settings.cta2_link }}" class="btn-secondary">
+          {{ section.settings.cta2 }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .inside-section{
+  padding:80px 20px;
+  }
+
+  .inside-container{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+  }
+
+  .inside-left{
+  position:relative;
+  background:#efe7de;
+  padding:40px;
+  border-radius:20px;
+  }
+
+  .inside-left img{
+  width:100%;
+  border-radius:12px;
+  }
+
+  .badge-top{
+  position:absolute;
+  top:-20px;
+  right:40px;
+  background:#f5f5f5;
+  padding:16px 20px;
+  border-radius:14px;
+  font-weight:700;
+  text-align:center;
+  box-shadow:0 10px 20px rgba(0,0,0,0.1);
+  }
+
+  .badge-top span{
+  font-size:12px;
+  font-weight:400;
+  }
+
+  .badge-bottom{
+  position:absolute;
+  bottom:-20px;
+  left:20px;
+  background:#5a8f6a;
+  color:white;
+  padding:10px 16px;
+  border-radius:20px;
+  font-size:14px;
+  }
+
+  .tag{
+  background:#f1e2d5;
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:14px;
+  color:#ff7a2f;
+  }
+
+  .inside-right h2{
+  font-size:36px;
+  margin:12px 0;
+  }
+
+  .desc{
+  color:#666;
+  margin-bottom:30px;
+  }
+
+  .ingredients{
+  background:#f8f8f8;
+  padding:24px;
+  border-radius:14px;
+  margin-bottom:30px;
+  }
+
+  .ingredient-row{
+  display:flex;
+  justify-content:space-between;
+  padding:10px 0;
+  border-bottom:1px solid #eee;
+  }
+
+  .ingredient-row:last-child{
+  border-bottom:none;
+  }
+
+  .value{
+  color:#ff7a2f;
+  font-weight:600;
+  }
+
+  .stats{
+  display:flex;
+  gap:16px;
+  margin-bottom:30px;
+  }
+
+  .stat{
+  background:#efe7de;
+  padding:20px;
+  border-radius:14px;
+  flex:1;
+  text-align:center;
+  }
+
+  .stat h3{
+  color:#ff7a2f;
+  margin:0;
+  }
+
+  .buttons{
+  display:flex;
+  gap:16px;
+  }
+
+  .btn-primary{
+  background:#ff7a2f;
+  color:white;
+  padding:14px 22px;
+  border-radius:10px;
+  text-decoration:none;
+  }
+
+  .btn-secondary{
+  border:1px solid #ddd;
+  padding:14px 22px;
+  border-radius:10px;
+  text-decoration:none;
+  color:#333;
+  }
+
+  @media(max-width:768px){
+
+  .inside-container{
+  grid-template-columns:1fr;
+  }
+
+  .stats{
+  flex-direction:column;
+  }
+
+  }
+</style>

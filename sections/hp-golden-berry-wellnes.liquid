@@ -1,0 +1,154 @@
+{% schema %}
+{
+  "name": "Golden Berry Wellness",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The Golden Berry of Wellness"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Sea buckthorn berries are harvested from high-altitude regions where they've adapted to extreme conditions, developing an exceptional nutritional profile."
+    },
+    {
+      "type": "text",
+      "id": "point1",
+      "label": "Point 1",
+      "default": "Contains all 4 omega fatty acids (3, 6, 7, 9)"
+    },
+    {
+      "type": "text",
+      "id": "point2",
+      "label": "Point 2",
+      "default": "Rich in vitamins A, C, E, and K"
+    },
+    {
+      "type": "text",
+      "id": "point3",
+      "label": "Point 3",
+      "default": "Over 100 bioactive nutrients and antioxidants"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Right Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Golden Berry Wellness"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="golden-berry-section">
+  <div class="golden-berry-container">
+    
+    <div class="golden-berry-text">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.description }}</p>
+
+      <ul class="golden-berry-list">
+        {% if section.settings.point1 != blank %}
+          <li>✔ {{ section.settings.point1 }}</li>
+        {% endif %}
+        {% if section.settings.point2 != blank %}
+          <li>✔ {{ section.settings.point2 }}</li>
+        {% endif %}
+        {% if section.settings.point3 != blank %}
+          <li>✔ {{ section.settings.point3 }}</li>
+        {% endif %}
+      </ul>
+    </div>
+
+    <div class="golden-berry-image">
+      {% if section.settings.image %}
+        <img 
+          src="{{ section.settings.image | image_url: width: 900 }}" 
+          alt="{{ section.settings.heading }}"
+          loading="lazy"
+        >
+      {% endif %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+.golden-berry-section{
+  padding: 60px 20px;
+}
+
+.golden-berry-container{
+  max-width: 1200px;
+  margin: auto;
+  background: #e9e1d7;
+  border-radius: 24px;
+  padding: 60px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.golden-berry-text h2{
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.golden-berry-text p{
+  font-size: 18px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.golden-berry-list{
+  list-style: none;
+  padding: 0;
+}
+
+.golden-berry-list li{
+  font-size: 18px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.golden-berry-list li::before{
+  content: "✔";
+  background: #6c9277;
+  color: white;
+  font-size: 12px;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.golden-berry-image img{
+  width: 100%;
+  border-radius: 20px;
+  display: block;
+}
+
+/* Mobile */
+@media (max-width: 768px){
+  .golden-berry-container{
+    grid-template-columns: 1fr;
+    padding: 35px;
+  }
+
+  .golden-berry-text h2{
+    font-size: 28px;
+  }
+}
+</style>

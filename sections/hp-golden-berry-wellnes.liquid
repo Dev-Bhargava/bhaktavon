@@ -49,106 +49,137 @@
 
 <section class="golden-berry-section">
   <div class="golden-berry-container">
-    
     <div class="golden-berry-text">
       <h2>{{ section.settings.heading }}</h2>
       <p>{{ section.settings.description }}</p>
 
       <ul class="golden-berry-list">
         {% if section.settings.point1 != blank %}
-          <li> {{ section.settings.point1 }}</li>
+          <li>
+            <svg
+              class="w-3 h-3 text-white"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              data-fg-3hz33="1.18:1.6064:/src/app/components/Benefits.tsx:92:19:3802:287:e:svg:e"
+              data-fgid-3hz33=":r3a:"
+            >
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" data-fg-3hz34="1.18:1.6064:/src/app/components/Benefits.tsx:93:21:3899:165:e:path"></path>
+            </svg>
+            {{ section.settings.point1 }}
+          </li>
         {% endif %}
         {% if section.settings.point2 != blank %}
-          <li> {{ section.settings.point2 }}</li>
+            <li>
+              <svg
+                class="w-3 h-3 text-white"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                data-fg-3hz33="1.18:1.6064:/src/app/components/Benefits.tsx:92:19:3802:287:e:svg:e"
+                data-fgid-3hz33=":r3a:"
+              >
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" data-fg-3hz34="1.18:1.6064:/src/app/components/Benefits.tsx:93:21:3899:165:e:path"></path>
+              </svg>
+              {{ section.settings.point2 }}
+            </li>
         {% endif %}
         {% if section.settings.point3 != blank %}
-          <li> {{ section.settings.point3 }}</li>
+            <li>
+              <svg
+                class="w-3 h-3 text-white"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                data-fg-3hz33="1.18:1.6064:/src/app/components/Benefits.tsx:92:19:3802:287:e:svg:e"
+                data-fgid-3hz33=":r3a:"
+              >
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" data-fg-3hz34="1.18:1.6064:/src/app/components/Benefits.tsx:93:21:3899:165:e:path"></path>
+              </svg>
+              {{ section.settings.point3 }}
+            </li>
         {% endif %}
       </ul>
     </div>
 
     <div class="golden-berry-image">
       {% if section.settings.image %}
-        <img 
-          src="{{ section.settings.image | image_url: width: 900 }}" 
+        <img
+          src="{{ section.settings.image | image_url: width: 900 }}"
           alt="{{ section.settings.heading }}"
           loading="lazy"
         >
       {% endif %}
     </div>
-
   </div>
 </section>
 
 <style>
-.golden-berry-section{
-  padding: 60px 20px;
-}
+  .golden-berry-section{
+    padding: 60px 20px;
+  }
 
-.golden-berry-container{
-  margin: auto;
-  background: #e9e1d7;
-  border-radius: 24px;
-  padding: 60px;
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 50px;
-  align-items: center;
-}
-
-.golden-berry-text h2{
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
-.golden-berry-text p{
-  font-size: 18px;
-  color: #555;
-  line-height: 1.6;
-  margin-bottom: 25px;
-}
-
-.golden-berry-list{
-  list-style: none;
-  padding: 0;
-}
-
-.golden-berry-list li{
-  font-size: 18px;
-  margin-bottom: 14px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.golden-berry-list li::before{
-  content: "✔";
-  background: #6c9277;
-  color: white;
-  font-size: 12px;
-  width: 24px;
-  height: 24px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-}
-
-.golden-berry-image img{
-  width: 100%;
-  border-radius: 20px;
-  display: block;
-}
-
-/* Mobile */
-@media (max-width: 768px){
   .golden-berry-container{
-    grid-template-columns: 1fr;
-    padding: 35px;
+    margin: auto;
+    background: #e9e1d7;
+    border-radius: 24px;
+    padding: 60px;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 50px;
+    align-items: center;
   }
 
   .golden-berry-text h2{
-    font-size: 28px;
+    font-size: 36px;
+    margin-bottom: 20px;
   }
-}
+
+  .golden-berry-text p{
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 25px;
+  }
+
+  .golden-berry-list{
+    list-style: none;
+    padding: 0;
+  }
+
+  .golden-berry-list li{
+    font-size: 18px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .golden-berry-list li::before{
+    content: "✔";
+    background: #6c9277;
+    color: white;
+    font-size: 12px;
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .golden-berry-image img{
+    width: 100%;
+    border-radius: 20px;
+    display: block;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px){
+    .golden-berry-container{
+      grid-template-columns: 1fr;
+      padding: 35px;
+    }
+
+    .golden-berry-text h2{
+      font-size: 28px;
+    }
+  }
 </style>

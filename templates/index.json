@@ -356,7 +356,7 @@
                   "name": "t:names.button",
                   "settings": {
                     "label": "Shop Bhaktavon Juice",
-                    "link": "shopify://collections/all",
+                    "link": "shopify://products/pure-sea-buckthorn-juice",
                     "open_in_new_tab": false,
                     "style_class": "button",
                     "width": "custom",
@@ -371,7 +371,7 @@
                   "name": "t:names.button",
                   "settings": {
                     "label": "Learn More",
-                    "link": "shopify://collections/all",
+                    "link": "shopify://products/pure-sea-buckthorn-juice",
                     "open_in_new_tab": true,
                     "style_class": "button-secondary",
                     "width": "custom",

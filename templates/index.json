@@ -629,6 +629,82 @@
         "image": "shopify://shop_images/photo-1768231408401-22a6b94ef318.jpg"
       }
     },
+    "hp_what_inside_HMNHW4": {
+      "type": "hp-what-inside",
+      "blocks": {
+        "ingredient_GDkcax": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Sea Buckthorn Juice",
+            "value": "100%"
+          }
+        },
+        "ingredient_cgL6G4": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Added Sugar",
+            "value": "0g"
+          }
+        },
+        "ingredient_3eHBwb": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Preservatives",
+            "value": "None"
+          }
+        },
+        "ingredient_kEyVjJ": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Artificial Flavors",
+            "value": "None"
+          }
+        },
+        "stat_mMrgtc": {
+          "type": "stat",
+          "settings": {
+            "number": "200%",
+            "label": "Daily Vitamin C"
+          }
+        },
+        "stat_b9t7kq": {
+          "type": "stat",
+          "settings": {
+            "number": "Ω 3-9",
+            "label": "Omega Fatty Acids"
+          }
+        },
+        "stat_cHaqDb": {
+          "type": "stat",
+          "settings": {
+            "number": "190+",
+            "label": "Nutrients"
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_GDkcax",
+        "ingredient_cgL6G4",
+        "ingredient_3eHBwb",
+        "ingredient_kEyVjJ",
+        "stat_mMrgtc",
+        "stat_b9t7kq",
+        "stat_cHaqDb"
+      ],
+      "name": "What's Inside",
+      "settings": {
+        "image": "shopify://shop_images/photo-1759006249055-8c4030a2d56a.jpg",
+        "badge_top": "500ml",
+        "badge_bottom": "100% Pure",
+        "tag": "Premium Quality",
+        "heading": "What's Inside",
+        "description": "Pure, cold-pressed sea buckthorn juice with nothing added. Just the concentrated power of nature.",
+        "cta1": "Buy Now — ₹899",
+        "cta1_link": "",
+        "cta2": "View Full Nutrition",
+        "cta2_link": ""
+      }
+    },
     "hero_jVaWmY": {
       "type": "hero",
       "blocks": {
@@ -1231,6 +1307,7 @@
     "featured_product_information_fqmUKW",
     "hp_section_2_FQRUjh",
     "hp_golden_berry_wellnes_JzzYHL",
+    "hp_what_inside_HMNHW4",
     "hero_jVaWmY",
     "product_list_fa6P9H",
     "section_9xAiAy"

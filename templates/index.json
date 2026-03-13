@@ -617,6 +617,18 @@
         "subheading": "One of nature's most nutrient-dense superfruits, backed by centuries of traditional use and modern science."
       }
     },
+    "hp_golden_berry_wellnes_JzzYHL": {
+      "type": "hp-golden-berry-wellnes",
+      "name": "Golden Berry Wellness",
+      "settings": {
+        "heading": "The Golden Berry of Wellness",
+        "description": "Sea buckthorn berries are harvested from high-altitude regions where they've adapted to extreme conditions, developing an exceptional nutritional profile.",
+        "point1": "Contains all 4 omega fatty acids (3, 6, 7, 9)",
+        "point2": "Rich in vitamins A, C, E, and K",
+        "point3": "Over 100 bioactive nutrients and antioxidants",
+        "image": "shopify://shop_images/photo-1768231408401-22a6b94ef318.jpg"
+      }
+    },
     "hero_jVaWmY": {
       "type": "hero",
       "blocks": {
@@ -1218,6 +1230,7 @@
   "order": [
     "featured_product_information_fqmUKW",
     "hp_section_2_FQRUjh",
+    "hp_golden_berry_wellnes_JzzYHL",
     "hero_jVaWmY",
     "product_list_fa6P9H",
     "section_9xAiAy"

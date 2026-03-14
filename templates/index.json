@@ -1316,7 +1316,7 @@
         "step_7FKbN6": {
           "type": "step",
           "settings": {
-            "icon": "",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-coffee w-7 h-7 text-[#FF8C42]\" data-fg-med18=\"1.20:1.4348:/src/app/components/HowToUse.tsx:52:21:2131:43:e:Icon\" data-fgid-med18=\":r5s:\">\n                            <path d=\"M10 2v2\"></path>\n                            <path d=\"M14 2v2\"></path>\n                            <path d=\"M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1\"></path>\n                            <path d=\"M6 2v2\"></path>\n                          </svg>",
             "title": "Daily Dosage",
             "text": "Take 30ml (2 tablespoons) per day. Can be taken all at once or divided into morning and evening doses."
           }
@@ -1324,7 +1324,7 @@
         "step_mcfckf": {
           "type": "step",
           "settings": {
-            "icon": "",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-clock w-7 h-7 text-[#FF8C42]\" data-fg-med18=\"1.20:1.4348:/src/app/components/HowToUse.tsx:52:21:2131:43:e:Icon\" data-fgid-med18=\":r64:\">\n                            <circle cx=\"12\" cy=\"12\" r=\"10\"></circle>\n                            <polyline points=\"12 6 12 12 16 14\"></polyline>\n                          </svg>",
             "title": "Daily Dosage",
             "text": "Take 30ml (2 tablespoons) per day. Can be taken all at once or divided into morning and evening doses."
           }

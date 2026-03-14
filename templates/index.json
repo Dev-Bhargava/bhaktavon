@@ -1310,23 +1310,23 @@
           "settings": {
             "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-droplet w-7 h-7 text-[#FF8C42]\" data-fg-med18=\"1.20:1.4348:/src/app/components/HowToUse.tsx:52:21:2131:43:e:Icon\" data-fgid-med18=\":r5k:\">\n                            <path d=\"M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z\"></path>\n                          </svg>",
             "title": "Daily Dosage",
-            "text": "<strong>Take 30ml (2 tablespoons) per day.</strong>Can be taken all at once or divided into morning and evening doses."
+            "text": "<strong>Take 30ml (2 tablespoons) per day.</strong>\n<br><br>\nCan be taken all at once or divided into morning and evening doses."
           }
         },
         "step_7FKbN6": {
           "type": "step",
           "settings": {
             "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-coffee w-7 h-7 text-[#FF8C42]\" data-fg-med18=\"1.20:1.4348:/src/app/components/HowToUse.tsx:52:21:2131:43:e:Icon\" data-fgid-med18=\":r5s:\">\n                            <path d=\"M10 2v2\"></path>\n                            <path d=\"M14 2v2\"></path>\n                            <path d=\"M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1\"></path>\n                            <path d=\"M6 2v2\"></path>\n                          </svg>",
-            "title": "Daily Dosage",
-            "text": "<strong>Take 30ml (2 tablespoons) per day.</strong>Can be taken all at once or divided into morning and evening doses."
+            "title": "How to Consume",
+            "text": "<strong>Mix with water, juice, or smoothies</strong>\n<br><br>\nOr take it straight for maximum potency. Best consumed on an empty stomach."
           }
         },
         "step_mcfckf": {
           "type": "step",
           "settings": {
             "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-clock w-7 h-7 text-[#FF8C42]\" data-fg-med18=\"1.20:1.4348:/src/app/components/HowToUse.tsx:52:21:2131:43:e:Icon\" data-fgid-med18=\":r64:\">\n                            <circle cx=\"12\" cy=\"12\" r=\"10\"></circle>\n                            <polyline points=\"12 6 12 12 16 14\"></polyline>\n                          </svg>",
-            "title": "Daily Dosage",
-            "text": "<strong>Take 30ml (2 tablespoons) per day.</strong> Can be taken all at once or divided into morning and evening doses."
+            "title": "Best Time",
+            "text": "<strong>Morning or before meals</strong> \n<br><br>\nConsistent daily use yields the best results. Store in refrigerator after opening."
           }
         }
       },

@@ -1301,6 +1301,42 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "hp_how_to_consume_JeaR6L": {
+      "type": "hp-how-to-consume",
+      "blocks": {
+        "step_f8cCry": {
+          "type": "step",
+          "settings": {
+            "title": "Daily Dosage",
+            "text": "Take 30ml (2 tablespoons) per day. Can be taken all at once or divided into morning and evening doses."
+          }
+        },
+        "step_7FKbN6": {
+          "type": "step",
+          "settings": {
+            "title": "Daily Dosage",
+            "text": "Take 30ml (2 tablespoons) per day. Can be taken all at once or divided into morning and evening doses."
+          }
+        },
+        "step_mcfckf": {
+          "type": "step",
+          "settings": {
+            "title": "Daily Dosage",
+            "text": "Take 30ml (2 tablespoons) per day. Can be taken all at once or divided into morning and evening doses."
+          }
+        }
+      },
+      "block_order": [
+        "step_f8cCry",
+        "step_7FKbN6",
+        "step_mcfckf"
+      ],
+      "name": "How to Consume",
+      "settings": {
+        "heading": "How to Consume",
+        "subheading": "Simple, flexible, and easy to incorporate into your daily routine."
+      }
     }
   },
   "order": [
@@ -1310,6 +1346,7 @@
     "hp_what_inside_HMNHW4",
     "hero_jVaWmY",
     "product_list_fa6P9H",
-    "section_9xAiAy"
+    "section_9xAiAy",
+    "hp_how_to_consume_JeaR6L"
   ]
 }

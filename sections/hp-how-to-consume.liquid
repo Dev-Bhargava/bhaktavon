@@ -16,7 +16,7 @@
 
           <div class="icon-wrapper">
             {% if block.settings.icon != blank %}
-              <img src="{{ block.settings.icon | image_url: width: 80 }}" alt="">
+              {{ block.settings.icon }}
             {% endif %}
           </div>
 

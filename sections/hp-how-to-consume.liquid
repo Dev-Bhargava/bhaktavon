@@ -1,0 +1,178 @@
+<section class="how-to-consume-section">
+  <div class="page-width">
+    
+    <div class="section-header">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.subheading }}</p>
+    </div>
+
+    <div class="consume-grid">
+      {% for block in section.blocks %}
+        <div class="consume-card">
+
+          <div class="step-number">
+            {{ forloop.index }}
+          </div>
+
+          <div class="icon-wrapper">
+            {% if block.settings.icon != blank %}
+              <img src="{{ block.settings.icon | image_url: width: 80 }}" alt="">
+            {% endif %}
+          </div>
+
+          <h3>{{ block.settings.title }}</h3>
+          <p class="desc">{{ block.settings.text }}</p>
+
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+
+.how-to-consume-section{
+  padding:80px 20px;
+  background:#f7f7f7;
+}
+
+.section-header{
+  text-align:center;
+  margin-bottom:50px;
+}
+
+.section-header h2{
+  font-size:42px;
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+.section-header p{
+  font-size:18px;
+  color:#666;
+}
+
+.consume-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+}
+
+.consume-card{
+  background:#fff;
+  border-radius:16px;
+  padding:40px;
+  position:relative;
+  border:1px solid #e6e6e6;
+}
+
+.consume-card:first-child{
+  border:2px solid #ff8a3d;
+}
+
+.step-number{
+  position:absolute;
+  top:-15px;
+  left:-15px;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:#ff8a3d;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:600;
+}
+
+.icon-wrapper{
+  width:60px;
+  height:60px;
+  border:2px solid #ff8a3d;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:20px;
+}
+
+.icon-wrapper img{
+  max-width:28px;
+}
+
+.consume-card h3{
+  font-size:22px;
+  margin-bottom:12px;
+}
+
+.consume-card .desc{
+  color:#666;
+  font-size:16px;
+  line-height:1.6;
+}
+
+@media(max-width:900px){
+  .consume-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+</style>
+
+{% schema %}
+{
+  "name": "How to Consume",
+  "class": "section section--page-width",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How to Consume"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Simple, flexible, and easy to incorporate into your daily routine."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Daily Dosage"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Take 30ml (2 tablespoons) per day. Can be taken all at once or divided into morning and evening doses."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How to Consume",
+      "category": "Home Page",
+      "blocks": [
+        { "type": "step" },
+        { "type": "step" },
+        { "type": "step" }
+      ]
+    }
+  ]
+}
+{% endschema %}

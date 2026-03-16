@@ -840,6 +840,7 @@
           "type": "review",
           "settings": {
             "review": "I've been taking Bhaktavon for 3 weeks now and I can already see improvements in my skin. It's glowing! The taste is tart but manageable when mixed with orange juice.",
+            "star_count": "5",
             "name": "Priya Sharma",
             "location": "Mumbai · January 2026"
           }
@@ -848,6 +849,7 @@
           "type": "review",
           "settings": {
             "review": "As someone who frequently travels for work, I needed something to boost my immunity. This juice has been a game-changer. Haven't fallen sick in months.",
+            "star_count": "",
             "name": "Rahul Mehta",
             "location": "Bangalore · December 2025"
           }
@@ -856,6 +858,7 @@
           "type": "review",
           "settings": {
             "review": "Good quality product. I appreciate that it's pure with no added sugar. My digestion has definitely improved. Only wish it came in a larger size!",
+            "star_count": "",
             "name": "Anita Desai",
             "location": "Delhi · January 2026"
           }
@@ -864,6 +867,7 @@
           "type": "review",
           "settings": {
             "review": "Excellent product! Very different from other wellness drinks I've tried. You can tell it's the real deal. My energy levels have noticeably improved",
+            "star_count": "",
             "name": "Vikram Singh",
             "location": "Pune · November 2025"
           }
@@ -872,6 +876,7 @@
           "type": "review",
           "settings": {
             "review": "I was skeptical at first, but after reading about sea buckthorn benefits, I decided to try. Best decision! My hair and nails are stronger, and I feel healthier overall.",
+            "star_count": "",
             "name": "Meera Iyer",
             "location": "Chennai · December 2025"
           }
@@ -880,6 +885,7 @@
           "type": "review",
           "settings": {
             "review": "Quality product with visible benefits. Takes some getting used to the taste, but the health improvements make it worth it. Highly recommend for anyone serious about wellness.",
+            "star_count": "",
             "name": "Arjun Patel",
             "location": "Ahmedabad · January 2026"
           }

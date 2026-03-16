@@ -31,7 +31,7 @@
         <div class="review-top">
             <div class="rating-stars">
                 {% for i in (1..5) %}
-                    {% if i <= block.settings.star_count %}
+                    {% if i <= 4 %}
                         {% render 'star', class: 'active' %}
                     {% else %}
                         {% render 'star' %}

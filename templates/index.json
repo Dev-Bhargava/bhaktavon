@@ -744,6 +744,42 @@
         "subheading": "Simple, flexible, and easy to incorporate into your daily routine."
       }
     },
+    "hp_wellness_ritual_gRjq76": {
+      "type": "hp-wellness-ritual",
+      "blocks": {
+        "stat_7XGCYk": {
+          "type": "stat",
+          "settings": {
+            "stat": "21 Days",
+            "label": "Minimum for best results"
+          }
+        },
+        "stat_XeGWmt": {
+          "type": "stat",
+          "settings": {
+            "stat": "21 Days",
+            "label": "Minimum for best results"
+          }
+        },
+        "stat_L8fVyQ": {
+          "type": "stat",
+          "settings": {
+            "stat": "21 Days",
+            "label": "Minimum for best results"
+          }
+        }
+      },
+      "block_order": [
+        "stat_7XGCYk",
+        "stat_XeGWmt",
+        "stat_L8fVyQ"
+      ],
+      "name": "Wellness Ritual Banner",
+      "settings": {
+        "heading": "Your Daily Wellness Ritual",
+        "description": "Make Bhaktavon part of your morning routine for consistent health benefits. Many users report feeling more energized and notice improvements in their skin within 2-3 weeks of regular use."
+      }
+    },
     "hero_jVaWmY": {
       "type": "hero",
       "blocks": {
@@ -1348,6 +1384,7 @@
     "hp_golden_berry_wellnes_JzzYHL",
     "hp_what_inside_HMNHW4",
     "hp_how_to_consume_JeaR6L",
+    "hp_wellness_ritual_gRjq76",
     "hero_jVaWmY",
     "product_list_fa6P9H",
     "section_9xAiAy"

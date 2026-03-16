@@ -29,9 +29,11 @@
       <div class="review-card">
 
         <div class="review-top">
-            {% for i in (1..block.settings.star_count) %}
-                
-            {% endfor %}
+            <div class="rating-stars">
+                {% for i in (1..block.settings.star_count) %}
+                    {% render 'star' %}
+                {% endfor %}
+            </div>
           <div class="stars">★★★★★</div>
           <span class="verified">Verified</span>
         </div>

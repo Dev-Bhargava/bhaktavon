@@ -31,7 +31,7 @@
         <div class="review-top">
             <div class="rating-stars">
                 {% for i in (1..block.settings.star_count) %}
-                    {% render 'star' %}
+                    {% render 'star', class: 'active' %}
                 {% endfor %}
             </div>
           <div class="stars">★★★★★</div>

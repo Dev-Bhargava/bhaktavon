@@ -13,7 +13,7 @@
         {{ section.settings.rating }}
       </div>
 
-      {% assign rating = section.settings.rating | plus: 0 %}
+      {% assign rating = section.settings.rating | round | plus: 0 %}
       {{ rating }}
         {% for i in (1..5) %}
             {% if i <= rating %}

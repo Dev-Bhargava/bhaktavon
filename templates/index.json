@@ -833,6 +833,18 @@
         "button_link": ""
       }
     },
+    "hp_customer_reviews_9JnzMG": {
+      "type": "hp-customer-reviews",
+      "name": "Customer Reviews",
+      "settings": {
+        "heading": "What Our Customers Say",
+        "subheading": "Real reviews from real people experiencing real benefits.",
+        "rating": "4.8",
+        "review_count": "500",
+        "button_text": "Read More Reviews",
+        "button_link": ""
+      }
+    },
     "hero_jVaWmY": {
       "type": "hero",
       "blocks": {
@@ -1439,6 +1451,7 @@
     "hp_how_to_consume_JeaR6L",
     "hp_wellness_ritual_gRjq76",
     "trust_quality_kGqJCE",
+    "hp_customer_reviews_9JnzMG",
     "hero_jVaWmY",
     "product_list_fa6P9H",
     "section_9xAiAy"

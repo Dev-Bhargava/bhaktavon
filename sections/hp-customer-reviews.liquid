@@ -13,9 +13,15 @@
         {{ section.settings.rating }}
       </div>
 
-      <div class="rating-stars">
-        {% render 'star' %}
-      </div>
+      {% assign rating = section.settings.rating | plus: 0 %}
+
+        {% for i in (1..5) %}
+            {% if i <= rating %}
+                {% render 'star', class: 'active' %}
+            {% else %}
+                {% render 'star' %}
+            {% endif %}
+        {% endfor %}
 
       <div class="rating-text">
         Based on <strong>{{ section.settings.review_count }}+ reviews</strong>

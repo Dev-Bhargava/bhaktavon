@@ -8,8 +8,8 @@
 
     <!-- Rating Summary -->
     <div style="display: flex; justify-content: center; align-items: center">
-        <div class="rating-summary">
-            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center">
+      <div class="rating-summary">
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center">
           <div class="rating-number">
             {{ section.settings.rating }}
           </div>
@@ -24,11 +24,12 @@
               {% endif %}
             {% endfor %}
           </div>
-            </div>
-
-          <div class="rating-text">
-            Based on <br/><strong>{{ section.settings.review_count }}+ reviews</strong>
-          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="rating-text">
+          Based on <br>
+          <strong>{{ section.settings.review_count }}+ reviews</strong>
+        </div>
       </div>
     </div>
 

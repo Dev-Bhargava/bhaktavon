@@ -780,6 +780,54 @@
         "description": "Make Bhaktavon part of your morning routine for consistent health benefits. Many users report feeling more energized and notice improvements in their skin within 2-3 weeks of regular use."
       }
     },
+    "trust_quality_kGqJCE": {
+      "type": "trust-quality",
+      "blocks": {
+        "feature_AfQhXt": {
+          "type": "feature",
+          "settings": {
+            "title": "Lab Tested",
+            "text": "Every batch is tested for purity and safety."
+          }
+        },
+        "feature_NMAJkJ": {
+          "type": "feature",
+          "settings": {
+            "title": "No Added Sugar",
+            "text": "Pure fruit juice with no added sugars, sweeteners, or artificial ingredients."
+          }
+        },
+        "feature_8nbE6R": {
+          "type": "feature",
+          "settings": {
+            "title": "No Preservatives",
+            "text": "Cold-pressed and naturally preserved without any chemical additives."
+          }
+        },
+        "feature_nztteP": {
+          "type": "feature",
+          "settings": {
+            "title": "Made in India",
+            "text": "Every batch is tested for purity and safety."
+          }
+        }
+      },
+      "block_order": [
+        "feature_AfQhXt",
+        "feature_NMAJkJ",
+        "feature_8nbE6R",
+        "feature_nztteP"
+      ],
+      "name": "Trust & Quality Section",
+      "settings": {
+        "heading": "Trust & Quality",
+        "subheading": "We're committed to transparency and quality in every bottle we produce.",
+        "quality_heading": "Quality You Can Trust",
+        "quality_text": "Our sea buckthorn is sustainably harvested from pristine high-altitude regions and processed using cold-press technology to preserve its nutritional integrity.",
+        "button_text": "View Product",
+        "button_link": ""
+      }
+    },
     "hero_jVaWmY": {
       "type": "hero",
       "blocks": {
@@ -1385,6 +1433,7 @@
     "hp_what_inside_HMNHW4",
     "hp_how_to_consume_JeaR6L",
     "hp_wellness_ritual_gRjq76",
+    "trust_quality_kGqJCE",
     "hero_jVaWmY",
     "product_list_fa6P9H",
     "section_9xAiAy"

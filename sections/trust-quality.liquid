@@ -12,7 +12,7 @@
         {% if block.type == 'feature' %}
         <div class="feature-card">
           <div class="icon">
-            <img src="{{ block.settings.icon | image_url: width: 60 }}" alt="">
+            {{ block.settings.icon }}
           </div>
           <h4>{{ block.settings.title }}</h4>
           <p>{{ block.settings.text }}</p>

@@ -30,13 +30,10 @@
 
         <div class="review-top">
             <div class="rating-stars">
-                {% assign block_star_count = block.settings.star_count | downcase %}
+                {% assign rating = block.settings.star_count | plus: 0 %}
+
                 {% for i in (1..5) %}
-                    {% if i <= block_star_count %}
-                        {% render 'star', class: 'active' %}
-                    {% else %}
-                        {% render 'star' %}
-                    {% endif %}
+                    {% render 'star', class: i <= rating | default: false | if: 'active' %}
                 {% endfor %}
             </div>
           <div class="stars">★★★★★</div>

@@ -757,15 +757,15 @@
         "stat_XeGWmt": {
           "type": "stat",
           "settings": {
-            "stat": "21 Days",
-            "label": "Minimum for best results"
+            "stat": "30ml",
+            "label": "Daily recommended dose"
           }
         },
         "stat_L8fVyQ": {
           "type": "stat",
           "settings": {
-            "stat": "21 Days",
-            "label": "Minimum for best results"
+            "stat": "2-4°C",
+            "label": "Storage temperature"
           }
         }
       },

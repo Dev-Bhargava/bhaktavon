@@ -33,7 +33,11 @@
                 {% assign rating = block.settings.star_count | plus: 0 %}
 
                 {% for i in (1..5) %}
-                    {% render 'star', class: i <= rating | default: false | if: 'active' %}
+                    {% if i <= rating %}
+                        {% render 'star', class: 'active' %}
+                    {% else %}
+                        {% render 'star' %}
+                    {% endif %}
                 {% endfor %}
             </div>
           <div class="stars">★★★★★</div>

@@ -13,10 +13,10 @@
         {{ section.settings.rating }}
       </div>
 
-      {% assign rating = section.settings.rating | round | plus: 0 %}
+      {% assign avg_rating = section.settings.rating | round | plus: 0 %}
 
         {% for i in (1..5) %}
-            {% if i <= rating %}
+            {% if i <= avg_rating %}
                 {% render 'star', class: 'active' %}
             {% else %}
                 {% render 'star' %}

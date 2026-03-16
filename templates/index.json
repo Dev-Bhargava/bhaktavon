@@ -786,6 +786,7 @@
         "feature_AfQhXt": {
           "type": "feature",
           "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-flask-conical w-8 h-8 text-white\" data-fg-eemd13=\"1.21:1.6795:/src/app/components/Trust.tsx:50:19:1874:39:e:Icon\" data-fgid-eemd13=\":r6v:\">\n                          <path d=\"M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2\"></path>\n                          <path d=\"M6.453 15h11.094\"></path>\n                          <path d=\"M8.5 2h7\"></path>\n                        </svg>",
             "title": "Lab Tested",
             "text": "Every batch is tested for purity and safety."
           }
@@ -793,6 +794,7 @@
         "feature_NMAJkJ": {
           "type": "feature",
           "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-leaf w-8 h-8 text-white\" data-fg-eemd13=\"1.21:1.6795:/src/app/components/Trust.tsx:50:19:1874:39:e:Icon\" data-fgid-eemd13=\":r74:\">\n                          <path d=\"M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z\"></path>\n                          <path d=\"M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12\"></path>\n                        </svg>",
             "title": "No Added Sugar",
             "text": "Pure fruit juice with no added sugars, sweeteners, or artificial ingredients."
           }
@@ -800,6 +802,7 @@
         "feature_8nbE6R": {
           "type": "feature",
           "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-shield w-8 h-8 text-white\" data-fg-eemd13=\"1.21:1.6795:/src/app/components/Trust.tsx:50:19:1874:39:e:Icon\" data-fgid-eemd13=\":r79:\">\n                          <path d=\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\"></path>\n                        </svg>",
             "title": "No Preservatives",
             "text": "Cold-pressed and naturally preserved without any chemical additives."
           }
@@ -807,8 +810,9 @@
         "feature_nztteP": {
           "type": "feature",
           "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-award w-8 h-8 text-white\" data-fg-eemd13=\"1.21:1.6795:/src/app/components/Trust.tsx:50:19:1874:39:e:Icon\" data-fgid-eemd13=\":r7e:\">\n                          <path d=\"m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526\"></path>\n                          <circle cx=\"12\" cy=\"8\" r=\"6\"></circle>\n                        </svg>",
             "title": "Made in India",
-            "text": "Every batch is tested for purity and safety."
+            "text": "Sourced sustainably and processed with care to maintain maximum nutritional value."
           }
         }
       },

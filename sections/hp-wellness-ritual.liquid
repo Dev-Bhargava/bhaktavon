@@ -1,0 +1,145 @@
+<section class="wellness-ritual">
+  <div class="page-width">
+    
+    <div class="wellness-content">
+      <h2>{{ section.settings.heading }}</h2>
+      <p class="wellness-text">
+        {{ section.settings.description }}
+      </p>
+
+      <div class="wellness-stats">
+        {% for block in section.blocks %}
+          <div class="stat-card">
+            <h3>{{ block.settings.stat }}</h3>
+            <p>{{ block.settings.label }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+
+.wellness-ritual{
+  padding:60px 20px;
+}
+
+.wellness-content{
+  background:linear-gradient(135deg,#ff8a3d,#ff6a2a);
+  border-radius:30px;
+  padding:80px 40px;
+  text-align:center;
+  color:#fff;
+}
+
+.wellness-content h2{
+  font-size:42px;
+  font-weight:700;
+  margin-bottom:20px;
+}
+
+.wellness-text{
+  max-width:800px;
+  margin:auto;
+  font-size:20px;
+  line-height:1.7;
+  margin-bottom:50px;
+}
+
+.wellness-stats{
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  flex-wrap:wrap;
+}
+
+.stat-card{
+  border:1px solid rgba(255,255,255,0.4);
+  border-radius:20px;
+  padding:30px 40px;
+  min-width:200px;
+  backdrop-filter: blur(4px);
+}
+
+.stat-card h3{
+  font-size:36px;
+  font-weight:700;
+  margin-bottom:8px;
+}
+
+.stat-card p{
+  font-size:16px;
+  opacity:0.9;
+}
+
+@media(max-width:768px){
+
+  .wellness-content{
+    padding:50px 25px;
+  }
+
+  .wellness-content h2{
+    font-size:32px;
+  }
+
+  .wellness-text{
+    font-size:18px;
+  }
+
+}
+
+</style>
+
+{% schema %}
+{
+  "name": "Wellness Ritual Banner",
+  "class": "section section--page-width",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your Daily Wellness Ritual"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Make Bhaktavon part of your morning routine for consistent health benefits. Many users report feeling more energized and notice improvements in their skin within 2-3 weeks of regular use."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat Box",
+      "settings": [
+        {
+          "type": "text",
+          "id": "stat",
+          "label": "Main Value",
+          "default": "21 Days"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Minimum for best results"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Wellness Ritual Banner",
+      "category": "Home Page",
+      "blocks": [
+        { "type": "stat" },
+        { "type": "stat" },
+        { "type": "stat" }
+      ]
+    }
+  ]
+}
+{% endschema %}

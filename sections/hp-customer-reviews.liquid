@@ -44,7 +44,7 @@
 
         <div class="review-top">
             {% for i in block.settings.star_count %}
-              {{ i }}
+              {{ forloop.index }}
             {% endfor %}
           <div class="stars">★★★★★</div>
           <span class="verified">Verified</span>

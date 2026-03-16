@@ -43,8 +43,8 @@
       <div class="review-card">
 
         <div class="review-top">
-            {% for i in block.settings.star_count %}
-              {{ forloop.index }}
+            {% for i in (1..block.settings.star_count) %}
+                {{ i }}
             {% endfor %}
           <div class="stars">★★★★★</div>
           <span class="verified">Verified</span>

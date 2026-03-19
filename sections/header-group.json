@@ -80,6 +80,9 @@
           "blocks": {}
         }
       },
+      "custom_css": [
+        ".header-logo__image-container{font-size: 28px}"
+      ],
       "settings": {
         "logo_position": "left",
         "menu_position": "center",

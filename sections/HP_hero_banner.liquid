@@ -1,0 +1,234 @@
+{% schema %}
+{
+  "name": "Sea Buckthorn Hero",
+  "settings": [
+    { "type": "text", "id": "badge", "label": "Badge", "default": "100% Pure Sea Buckthorn" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Pure Sea Buckthorn.\nReal Benefits." },
+    { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "Science-backed wellness in every bottle. Boost immunity, support gut health, and nourish your skin naturally." },
+    { "type": "image_picker", "id": "product_image", "label": "Product Image" },
+    { "type": "text", "id": "cta_text", "label": "Primary Button", "default": "Shop Bhaktavon Juice" },
+    { "type": "url", "id": "cta_link", "label": "Primary Link" },
+    { "type": "text", "id": "secondary_text", "label": "Secondary Button", "default": "Learn More" },
+    { "type": "url", "id": "secondary_link", "label": "Secondary Link" }
+  ],
+  "presets": [{ "name": "Sea Buckthorn Hero" }]
+}
+{% endschema %}
+
+<section class="sb-hero">
+  <div class="sb-container">
+
+    <!-- LEFT -->
+    <div class="sb-content">
+      <div class="sb-badge sb-animate sb-delay-1">
+        {{ section.settings.badge }}
+      </div>
+
+      <h1 class="sb-heading sb-animate sb-delay-2">
+        {{ section.settings.heading | newline_to_br }}
+      </h1>
+
+      <p class="sb-subtext sb-animate sb-delay-3">
+        {{ section.settings.subtext }}
+      </p>
+
+      <div class="sb-features sb-animate sb-delay-4">
+        <span>● Immunity Support</span>
+        <span>● Gut Health</span>
+        <span>● Skin Nourishment</span>
+      </div>
+
+      <div class="sb-buttons sb-animate sb-delay-5">
+        <a href="{{ section.settings.cta_link }}" class="sb-btn primary">
+          {{ section.settings.cta_text }}
+        </a>
+        <a href="{{ section.settings.secondary_link }}" class="sb-btn secondary">
+          {{ section.settings.secondary_text }}
+        </a>
+      </div>
+
+      <div class="sb-trust sb-animate sb-delay-5">
+        <span>✔ Lab Tested</span>
+        <span>✔ No Added Sugar</span>
+        <span>✔ No Preservatives</span>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="sb-image sb-animate sb-delay-3">
+      {% if section.settings.product_image %}
+        <img src="{{ section.settings.product_image | image_url: width: 900 }}" alt="Product">
+      {% endif %}
+    </div>
+
+  </div>
+
+  <!-- FLOATING MOBILE BUTTON -->
+  <a href="{{ section.settings.cta_link }}" class="sb-floating">
+    View Product
+  </a>
+</section>
+
+<style>
+.sb-hero {
+  background: #f3ebe4;
+  padding: 60px 20px;
+  position: relative;
+}
+
+.sb-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.sb-content { flex: 1; }
+
+.sb-badge {
+  display: inline-block;
+  border: 1px solid #ff7a2f;
+  color: #ff7a2f;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.sb-heading {
+  font-size: 48px;
+  line-height: 1.2;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.sb-subtext {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.sb-features {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.sb-features span {
+  background: #eee;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.sb-buttons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.sb-btn {
+  padding: 14px 22px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sb-btn.primary {
+  background: #ff7a2f;
+  color: white;
+}
+
+.sb-btn.secondary {
+  background: #e5e5e5;
+  color: #222;
+}
+
+.sb-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.sb-trust {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: #444;
+}
+
+.sb-image img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 20px;
+}
+
+/* FLOATING BUTTON */
+.sb-floating {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ff7a2f;
+  color: white;
+  padding: 14px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  display: none;
+}
+
+/* ANIMATIONS */
+.sb-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.sb-animate.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sb-delay-1 { transition-delay: 0.1s; }
+.sb-delay-2 { transition-delay: 0.2s; }
+.sb-delay-3 { transition-delay: 0.3s; }
+.sb-delay-4 { transition-delay: 0.4s; }
+.sb-delay-5 { transition-delay: 0.5s; }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .sb-container {
+    flex-direction: column;
+  }
+
+  .sb-heading {
+    font-size: 34px;
+  }
+
+  .sb-buttons {
+    flex-direction: column;
+  }
+
+  .sb-floating {
+    display: block;
+  }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const elements = document.querySelectorAll(".sb-animate");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  }, { threshold: 0.15 });
+
+  elements.forEach((el) => observer.observe(el));
+});
+</script>

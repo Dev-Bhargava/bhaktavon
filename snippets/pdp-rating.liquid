@@ -6,6 +6,31 @@
 {%- endcomment -%}
 
 <style>
+    .rating-summary{
+        background: linear-gradient(to right in oklab, rgb(255, 245, 237) 0%, rgb(255, 255, 255) 100%);
+        border-radius: 16px;
+        padding: 16px 32px;
+        border: 1px solid oklch(0.928 0.006 264.531);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        max-width: 420px;
+        margin: 0 auto 50px;
+    }
+
+    .rating-summary .divider{;
+        width: 1px;
+        background-color: oklch(0.928 0.006 264.531);
+    }
+
+  .rating-number{
+    font-size:36px;
+    line-height: normal;
+    font-weight:700;
+    width: fit-content;
+  }
+
     .rating-stars{
     color: #ff7a2f;
     font-size:20px;

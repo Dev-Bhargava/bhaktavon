@@ -130,6 +130,7 @@
   font-weight: 400;
   line-height: 1.15;
   color: var(--pdp-text);
+  margin: 0
 }
 
 /* Rating */

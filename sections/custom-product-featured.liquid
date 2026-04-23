@@ -1,0 +1,270 @@
+<section class="custom-product">
+  <div class="custom-product-wrapper">
+
+    <!-- LEFT: IMAGE -->
+    <div class="custom-product-gallery">
+      {% if section.settings.product.featured_image %}
+        <img 
+          src="{{ section.settings.product.featured_image | image_url: width: 800 }}" 
+          alt="{{ section.settings.product.title }}"
+        >
+      {% endif %}
+    </div>
+
+    <!-- RIGHT: CONTENT -->
+    <div class="custom-product-details">
+
+      <!-- BADGES -->
+      <div class="product-badges">
+        <span class="badge badge--orange">Best Seller</span>
+        <span class="badge badge--green">In Stock</span>
+      </div>
+
+      <!-- TITLE -->
+      <h2 class="product-title">
+        {{ section.settings.product.title }}
+      </h2>
+
+      <!-- REVIEWS -->
+      <div class="product-reviews">
+        ⭐⭐⭐⭐⭐ <span>4.8</span> | <span>500+ reviews</span>
+      </div>
+
+      <!-- PRICE -->
+      <div class="product-price">
+        <span class="price-current">
+          {{ section.settings.product.price | money }}
+        </span>
+        <span class="price-old">
+          {{ section.settings.product.compare_at_price | money }}
+        </span>
+        <span class="price-save">Save 25%</span>
+      </div>
+
+      <p class="product-subtext">500ml bottle (30 servings)</p>
+
+      <!-- BENEFITS -->
+      <div class="product-benefits">
+        <h4>Key Benefits:</h4>
+        <ul>
+          <li>Boost Immunity</li>
+          <li>Skin Nourishment</li>
+          <li>Gut Health</li>
+          <li>Heart Health</li>
+        </ul>
+      </div>
+
+      <!-- PURCHASE OPTIONS -->
+      <div class="purchase-options">
+        <h4>Purchase Options:</h4>
+
+        <label class="option active">
+          <input type="radio" name="purchase" checked>
+          <div>
+            <strong>One-time Purchase</strong>
+            <p>{{ section.settings.product.price | money }} per bottle</p>
+          </div>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="purchase">
+          <div>
+            <strong>Subscribe & Save</strong>
+            <p>₹764 per bottle · Delivered monthly</p>
+          </div>
+          <span class="save-badge">Save 15%</span>
+        </label>
+      </div>
+
+      <!-- FORM -->
+      <form method="post" action="/cart/add">
+        <input type="hidden" name="id" value="{{ section.settings.product.variants.first.id }}">
+
+        <div class="product-actions">
+          <div class="quantity-selector">
+            <button type="button" onclick="this.nextElementSibling.stepDown()">-</button>
+            <input type="number" name="quantity" value="1" min="1">
+            <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+          </div>
+
+          <button type="submit" class="add-to-cart">
+            Add to Cart
+          </button>
+        </div>
+      </form>
+
+      <!-- SECONDARY -->
+      <div class="secondary-actions">
+        <button>♡ Save</button>
+        <button>⇄ Share</button>
+      </div>
+
+      <!-- TRUST -->
+      <div class="trust-badges">
+        <div>🚚 Free Shipping</div>
+        <div>🛡 Quality Assured</div>
+        <div>🔁 Easy Returns</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+.custom-product-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.custom-product-gallery img {
+  width: 100%;
+  border-radius: 16px;
+}
+
+/* RIGHT SIDE */
+.custom-product-details {
+  max-width: 480px;
+}
+
+.custom-product-details > * {
+  margin-bottom: 18px;
+}
+
+/* BADGES */
+.product-badges {
+  display: flex;
+  gap: 8px;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge--orange {
+  background: #ffe7d6;
+  color: #ff7a00;
+}
+
+.badge--green {
+  background: #e6f4ea;
+  color: #2e7d32;
+}
+
+/* TITLE */
+.product-title {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* REVIEWS */
+.product-reviews {
+  font-size: 14px;
+  color: #555;
+}
+
+/* PRICE */
+.product-price {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.price-current {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.price-old {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.price-save {
+  background: #e6f4ea;
+  color: #2e7d32;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+/* BENEFITS */
+.product-benefits ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.product-benefits li {
+  font-size: 14px;
+}
+
+/* OPTIONS */
+.option {
+  border: 2px solid #eee;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.option.active {
+  border-color: #ff7a00;
+  background: #fff7f0;
+}
+
+/* ACTIONS */
+.product-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.add-to-cart {
+  flex: 1;
+  background: #ff7a00;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+}
+
+/* TRUST */
+.trust-badges {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+</style>
+
+<script>
+document.querySelectorAll('.option').forEach(option => {
+  option.addEventListener('click', () => {
+    document.querySelectorAll('.option').forEach(o => o.classList.remove('active'));
+    option.classList.add('active');
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Custom Product UI",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Select Product"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Product UI"
+    }
+  ]
+}
+{% endschema %}

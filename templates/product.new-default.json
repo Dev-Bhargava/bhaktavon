@@ -258,6 +258,7 @@
           ]
         }
       },
+      "disabled": true,
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
@@ -268,6 +269,13 @@
         "color_scheme": "",
         "padding-block-start": 0,
         "padding-block-end": 0
+      }
+    },
+    "custom_product_featured_8Bdznq": {
+      "type": "custom-product-featured",
+      "name": "Custom Product UI",
+      "settings": {
+        "product": "pure-sea-buckthorn-juice"
       }
     },
     "custom_liquid_JyzrQe": {
@@ -284,6 +292,7 @@
   },
   "order": [
     "main",
+    "custom_product_featured_8Bdznq",
     "custom_liquid_JyzrQe"
   ]
 }

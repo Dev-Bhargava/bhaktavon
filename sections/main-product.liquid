@@ -167,7 +167,7 @@
                   endif
                 -%}
                 <button
-                  class="pdp-variant-btn{% if is_selected and forloop.index == 1 %} is-active{% endif %}{% unless variant_for_value.available %} is-sold-out{% endunless %}"
+                  class="pdp-variant-btn{% if forloop.index == 1 %} is-active{% endif  %}{% if is_selected %} is-active{% endif %}{% unless variant_for_value.available %} is-sold-out{% endunless %}"
                   data-value="{{ value | escape }}"
                   data-option-index="{{ forloop.parentloop.index0 }}"
                   aria-pressed="{{ is_selected }}"

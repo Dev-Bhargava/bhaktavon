@@ -303,7 +303,7 @@
   width:40px;height:40px;background:rgb(255, 245, 237);border-radius:var(--pdp-rad-md);
   display:flex;align-items:center;justify-content:center;box-shadow:var(--pdp-sh-sm);
 }
-.pdp-trust-label { font-size:var(--pdp-text-xs);color:var(--pdp-muted);font-weight:600; }
+.pdp-trust-label { font-size:var(--pdp-text-xs);rgb(255, 140, 66);font-weight:600; }
 
 /* Utility */
 .sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0; }

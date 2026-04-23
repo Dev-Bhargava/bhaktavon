@@ -125,9 +125,8 @@
 
 /* Title */
 .pdp-title {
-  font-family: var(--font-display);
-  font-size: var(--pdp-text-xl);
-  font-weight: 400;
+  font-size: 36px;
+  font-weight: 600;
   line-height: 1.15;
   color: var(--pdp-text);
   margin: 0

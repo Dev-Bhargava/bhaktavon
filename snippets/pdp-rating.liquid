@@ -36,7 +36,7 @@
         {{ rating }}
       </div>
 
-      {% assign avg_rating = section.settings.rating | round | plus: 0 %}
+      {% assign avg_rating = rating | round | plus: 0 %}
       <div class="rating-stars">
         {% for i in (1..5) %}
           {% if i <= avg_rating %}

@@ -117,7 +117,7 @@
   font-size: var(--pdp-text-xs); font-weight: 600;
   letter-spacing: .02em; font-family: var(--font-body);
 }
-.pdp-badge--orange { background:#fff0de;color:#a85500;border:1px solid #ffd08c; }
+.pdp-badge--orange { background:#fff0de;color: rgb(255, 140, 66);border:1px solid rgb(255, 140, 66); }
 .pdp-badge--green  { background:#e8f5ee;color:#1a5e35;border:1px solid #9ed4b4; }
 .pdp-badge--red    { background:#fdecea;color:#b91c1c;border:1px solid #fca5a5; }
 .pdp-badge--pulse  { animation: pdp-pulse 2s ease infinite; }

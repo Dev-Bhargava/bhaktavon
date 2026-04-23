@@ -21,11 +21,11 @@
 <div class="pdp-price" data-pdp-price>
   <div class="pdp-price__row">
     <span class="pdp-price__current" data-pdp-price-current>
-      {{ current_price | money }}
+      ₹ {{ current_price | money_without_currency }}
     </span>
     {%- if on_sale -%}
       <span class="pdp-price__orig" data-pdp-price-orig>
-        <s>{{ compare_at_price | money }}</s>
+        ₹ <s>{{ compare_at_price | money_without_currency }}</s>
       </span>
       <span class="pdp-price__save">Save {{ save_pct }}%</span>
     {%- endif -%}

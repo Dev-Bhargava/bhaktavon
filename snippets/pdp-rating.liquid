@@ -5,44 +5,6 @@
     count   — string or number (e.g. "500+")
 {%- endcomment -%}
 
-{%- liquid
-  assign full_stars  = rating | floor
-  assign has_half    = false
-  assign remainder   = rating | minus: full_stars
-  if remainder >= 0.25 and remainder < 0.75
-    assign has_half = true
-  elsif remainder >= 0.75
-    assign full_stars = full_stars | plus: 1
-  endif
-  assign empty_stars = 5 | minus: full_stars
-  if has_half
-    assign empty_stars = empty_stars | minus: 1
-  endif
--%}
-
-<div class="pdp-rating" itemscope itemtype="https://schema.org/AggregateRating">
-  <meta itemprop="ratingValue" content="{{ rating }}">
-  <meta itemprop="reviewCount" content="{{ count | remove: '+' | remove: ',' }}">
-
-  <div class="pdp-rating__stars" aria-label="{{ rating }} out of 5 stars">
-    {%- for i in (1..full_stars) -%}
-      <span class="pdp-star pdp-star--full" aria-hidden="true">★</span>
-    {%- endfor -%}
-    {%- if has_half -%}
-      <span class="pdp-star pdp-star--half" aria-hidden="true">★</span>
-    {%- endif -%}
-    {%- for i in (1..empty_stars) -%}
-      <span class="pdp-star pdp-star--empty" aria-hidden="true">☆</span>
-    {%- endfor -%}
-  </div>
-
-  <span class="pdp-rating__score" itemprop="ratingValue">{{ rating }}</span>
-  <span class="pdp-rating__sep" aria-hidden="true">|</span>
-  <a class="pdp-rating__count" href="#pdp-reviews" itemprop="reviewCount">
-    {{ count }} reviews
-  </a>
-</div>
-
 <div style="display: flex; justify-content: center; align-items: center">
     <div class="rating-summary">
     <div style="display: flex; flex-direction: column; justify-content: center; align-items: center">

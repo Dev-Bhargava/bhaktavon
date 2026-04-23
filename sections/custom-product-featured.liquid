@@ -1,116 +1,3 @@
-<section class="custom-product">
-  <div class="custom-product-wrapper">
-
-    <!-- LEFT: IMAGE -->
-    <div class="custom-product-gallery">
-      {% if section.settings.product.featured_image %}
-        <img 
-          src="{{ section.settings.product.featured_image | image_url: width: 800 }}" 
-          alt="{{ section.settings.product.title }}"
-        >
-      {% endif %}
-    </div>
-
-    <!-- RIGHT: CONTENT -->
-    <div class="custom-product-details">
-
-      <!-- BADGES -->
-      <div class="product-badges">
-        <span class="badge badge--orange">Best Seller</span>
-        <span class="badge badge--green">In Stock</span>
-      </div>
-
-      <!-- TITLE -->
-      <h2 class="product-title">
-        {{ section.settings.product.title }}
-      </h2>
-
-      <!-- REVIEWS -->
-      <div class="product-reviews">
-        ⭐⭐⭐⭐⭐ <span>4.8</span> | <span>500+ reviews</span>
-      </div>
-
-      <!-- PRICE -->
-      <div class="product-price">
-        <span class="price-current">
-          {{ section.settings.product.price | money }}
-        </span>
-        <span class="price-old">
-          {{ section.settings.product.compare_at_price | money }}
-        </span>
-        <span class="price-save">Save 25%</span>
-      </div>
-
-      <p class="product-subtext">500ml bottle (30 servings)</p>
-
-      <!-- BENEFITS -->
-      <div class="product-benefits">
-        <h4>Key Benefits:</h4>
-        <ul>
-          <li>Boost Immunity</li>
-          <li>Skin Nourishment</li>
-          <li>Gut Health</li>
-          <li>Heart Health</li>
-        </ul>
-      </div>
-
-      <!-- PURCHASE OPTIONS -->
-      <div class="purchase-options">
-        <h4>Purchase Options:</h4>
-
-        <label class="option active">
-          <input type="radio" name="purchase" checked>
-          <div>
-            <strong>One-time Purchase</strong>
-            <p>{{ section.settings.product.price | money }} per bottle</p>
-          </div>
-        </label>
-
-        <label class="option">
-          <input type="radio" name="purchase">
-          <div>
-            <strong>Subscribe & Save</strong>
-            <p>₹764 per bottle · Delivered monthly</p>
-          </div>
-          <span class="save-badge">Save 15%</span>
-        </label>
-      </div>
-
-      <!-- FORM -->
-      <form method="post" action="/cart/add">
-        <input type="hidden" name="id" value="{{ section.settings.product.variants.first.id }}">
-
-        <div class="product-actions">
-          <div class="quantity-selector">
-            <button type="button" onclick="this.nextElementSibling.stepDown()">-</button>
-            <input type="number" name="quantity" value="1" min="1">
-            <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
-          </div>
-
-          <button type="submit" class="add-to-cart">
-            Add to Cart
-          </button>
-        </div>
-      </form>
-
-      <!-- SECONDARY -->
-      <div class="secondary-actions">
-        <button>♡ Save</button>
-        <button>⇄ Share</button>
-      </div>
-
-      <!-- TRUST -->
-      <div class="trust-badges">
-        <div>🚚 Free Shipping</div>
-        <div>🛡 Quality Assured</div>
-        <div>🔁 Easy Returns</div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<style>
 .custom-product-wrapper {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
@@ -118,18 +5,30 @@
   align-items: center;
 }
 
-.custom-product-gallery img {
+/* GALLERY */
+.main-media img {
   width: 100%;
   border-radius: 16px;
 }
 
-/* RIGHT SIDE */
-.custom-product-details {
-  max-width: 480px;
+.thumbnail-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
 }
 
-.custom-product-details > * {
-  margin-bottom: 18px;
+.thumb {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid #eee;
+}
+
+/* DETAILS */
+.custom-product-details {
+  max-width: 480px;
 }
 
 /* BADGES */
@@ -145,26 +44,13 @@
   font-weight: 600;
 }
 
-.badge--orange {
-  background: #ffe7d6;
-  color: #ff7a00;
-}
-
-.badge--green {
-  background: #e6f4ea;
-  color: #2e7d32;
-}
+.badge--orange { background:#ffe7d6; color:#ff7a00; }
+.badge--green { background:#e6f4ea; color:#2e7d32; }
 
 /* TITLE */
 .product-title {
   font-size: 28px;
   font-weight: 700;
-}
-
-/* REVIEWS */
-.product-reviews {
-  font-size: 14px;
-  color: #555;
 }
 
 /* PRICE */
@@ -192,24 +78,35 @@
   font-size: 12px;
 }
 
-/* BENEFITS */
-.product-benefits ul {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px 20px;
-  list-style: none;
-  padding: 0;
+/* VARIANTS */
+.variant-group {
+  margin: 15px 0;
 }
 
-.product-benefits li {
-  font-size: 14px;
+.variant-options {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
-/* OPTIONS */
+.variant-btn {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.variant-btn.active {
+  border-color: #ff7a00;
+  background: #fff7f0;
+}
+
+/* PURCHASE */
 .option {
   border: 2px solid #eee;
-  border-radius: 12px;
   padding: 14px;
+  border-radius: 12px;
   margin-bottom: 10px;
   cursor: pointer;
 }
@@ -222,15 +119,33 @@
 /* ACTIONS */
 .product-actions {
   display: flex;
-  gap: 12px;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.qty {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.qty button {
+  padding: 10px;
+  border: none;
+  background: #fff;
+}
+
+.qty input {
+  width: 40px;
+  text-align: center;
+  border: none;
 }
 
 .add-to-cart {
   flex: 1;
   background: #ff7a00;
-  color: white;
+  color: #fff;
   border: none;
-  padding: 14px;
   border-radius: 10px;
 }
 
@@ -238,33 +153,6 @@
 .trust-badges {
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
   font-size: 12px;
 }
-</style>
-
-<script>
-document.querySelectorAll('.option').forEach(option => {
-  option.addEventListener('click', () => {
-    document.querySelectorAll('.option').forEach(o => o.classList.remove('active'));
-    option.classList.add('active');
-  });
-});
-</script>
-
-{% schema %}
-{
-  "name": "Custom Product UI",
-  "settings": [
-    {
-      "type": "product",
-      "id": "product",
-      "label": "Select Product"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Custom Product UI"
-    }
-  ]
-}
-{% endschema %}

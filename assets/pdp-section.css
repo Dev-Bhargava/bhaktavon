@@ -300,9 +300,10 @@
   transition:background var(--pdp-ease),box-shadow var(--pdp-ease);
 }
 .pdp-trust-icon {
-  width:40px;height:40px;background:rgb(255, 245, 237);border-radius:var(--pdp-rad-md);
-  display:flex;align-items:center;justify-content:center;box-shadow:var(--pdp-sh-sm);
+    width:40px;height:40px;background:rgb(255, 245, 237);border-radius:var(--pdp-rad-md);
+    display:flex;align-items:center;justify-content:center;box-shadow:var(--pdp-sh-sm);
 }
+.pdp-trust-icon svg{ stroke: rgb(255, 140, 66); }
 .pdp-trust-label { font-size:var(--pdp-text-xs);rgb(255, 140, 66);font-weight:600; }
 
 /* Utility */

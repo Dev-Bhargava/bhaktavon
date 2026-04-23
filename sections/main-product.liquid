@@ -1,0 +1,573 @@
+
+{%- comment -%}
+  Section: main-product.liquid
+  Theme:   Shopify Horizon
+  Renders the full Product Detail Page (PDP) matching the Sea Buckthorn UI.
+  Supports:
+    - Multi-image gallery with thumbnail strip
+    - Variant selector (size buttons)
+    - Selling plan groups (Subscribe & Save)
+    - Quantity stepper
+    - Add to Cart (AJAX)
+    - Save to Wishlist (client-side toggle)
+    - Trust badges (configurable via schema)
+    - Dynamic price update on variant / selling-plan change
+{%- endcomment -%}
+
+{%- liquid
+  assign current_variant   = product.selected_or_first_available_variant
+  assign product_form_id   = 'product-form-' | append: section.id
+  assign has_selling_plans = false
+  if product.selling_plan_groups.size > 0
+    assign has_selling_plans = true
+  endif
+-%}
+
+<div
+  class="pdp-section"
+  data-section-id="{{ section.id }}"
+  data-product-id="{{ product.id }}"
+  data-url="{{ product.url }}"
+>
+
+  {%- comment -%} ── BREADCRUMB ── {%- endcomment -%}
+  <nav class="pdp-breadcrumb" aria-label="Breadcrumb">
+    <a href="{{ routes.root_url }}">{{ 'general.breadcrumbs.home' | t }}</a>
+    <span aria-hidden="true">/</span>
+    {%- if collection -%}
+      <a href="{{ collection.url }}">{{ collection.title }}</a>
+      <span aria-hidden="true">/</span>
+    {%- else -%}
+      <a href="{{ routes.collections_url }}/all">Products</a>
+      <span aria-hidden="true">/</span>
+    {%- endif -%}
+    <span aria-current="page">{{ product.title }}</span>
+  </nav>
+
+  <div class="pdp-layout">
+
+    {%- comment -%} ══════════════ GALLERY ══════════════ {%- endcomment -%}
+    <div class="pdp-gallery" role="region" aria-label="{{ 'products.product.media.gallery_viewer' | t }}">
+
+      {%- comment -%} Main image {%- endcomment -%}
+      <div class="pdp-gallery__main" id="GalleryMain-{{ section.id }}">
+        {%- if product.featured_media -%}
+          <img
+            src="{{ product.featured_media | image_url: width: 800 }}"
+            srcset="
+              {{ product.featured_media | image_url: width: 400 }} 400w,
+              {{ product.featured_media | image_url: width: 800 }} 800w,
+              {{ product.featured_media | image_url: width: 1200 }} 1200w
+            "
+            sizes="(min-width: 900px) 50vw, 100vw"
+            alt="{{ product.featured_media.alt | escape | default: product.title }}"
+            width="{{ product.featured_media.width }}"
+            height="{{ product.featured_media.height }}"
+            loading="eager"
+            fetchpriority="high"
+            id="MainProductImage-{{ section.id }}"
+          >
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'pdp-gallery__placeholder' }}
+        {%- endif -%}
+        <div class="pdp-gallery__zoom-hint" aria-hidden="true">Hover to zoom</div>
+      </div>
+
+      {%- comment -%} Thumbnails {%- endcomment -%}
+      {%- if product.media.size > 1 -%}
+        <div class="pdp-gallery__thumbs" role="list" aria-label="Product images">
+          {%- for media in product.media limit: 5 -%}
+            <button
+              class="pdp-gallery__thumb{% if forloop.first %} is-active{% endif %}"
+              role="listitem"
+              data-media-id="{{ media.id }}"
+              data-src="{{ media | image_url: width: 800 }}"
+              aria-label="View image {{ forloop.index }}"
+              aria-pressed="{{ forloop.first }}"
+            >
+              <img
+                src="{{ media | image_url: width: 200 }}"
+                alt="{{ media.alt | escape | default: product.title }}"
+                width="200"
+                height="200"
+                loading="lazy"
+              >
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+    </div>
+    {%- comment -%} /gallery {%- endcomment -%}
+
+
+    {%- comment -%} ══════════════ PRODUCT INFO ══════════════ {%- endcomment -%}
+    <div class="pdp-info">
+
+      {%- comment -%} ── Badges ── {%- endcomment -%}
+      <div class="pdp-badges">
+        {%- if section.settings.badge_bestseller != blank -%}
+          <span class="pdp-badge pdp-badge--orange">{{ section.settings.badge_bestseller }}</span>
+        {%- endif -%}
+        {%- if current_variant.available -%}
+          <span class="pdp-badge pdp-badge--green pdp-badge--pulse">&#9679;&nbsp;In Stock</span>
+        {%- else -%}
+          <span class="pdp-badge pdp-badge--red">Out of Stock</span>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} ── Title ── {%- endcomment -%}
+      <h1 class="pdp-title">{{ product.title }}</h1>
+
+      {%- comment -%} ── Rating (metafield-driven) ── {%- endcomment -%}
+      {%- liquid
+        assign rating_value = product.metafields.reviews.rating.value | default: nil
+        assign rating_count = product.metafields.reviews.rating_count.value | default: nil
+      -%}
+      {%- if rating_value != nil or section.settings.show_static_rating -%}
+        {%- render 'pdp-rating',
+          rating: rating_value | default: section.settings.static_rating,
+          count: rating_count | default: section.settings.static_review_count
+        -%}
+      {%- endif -%}
+
+      <hr class="pdp-divider">
+
+      {%- comment -%} ── Price ── {%- endcomment -%}
+      <div class="pdp-price-block" id="PdpPrice-{{ section.id }}">
+        {%- render 'pdp-price', variant: current_variant, product: product -%}
+      </div>
+
+      {%- comment -%} ── Volume / SKU ── {%- endcomment -%}
+      {%- if section.settings.show_sku and current_variant.sku != blank -%}
+        <p class="pdp-price-vol" id="PdpSku-{{ section.id }}">
+          SKU: <span>{{ current_variant.sku }}</span>
+        </p>
+      {%- endif -%}
+
+      <hr class="pdp-divider">
+
+      {%- comment -%} ── Variant Selector ── {%- endcomment -%}
+      {%- unless product.has_only_default_variant -%}
+        {%- for option in product.options_with_values -%}
+          <div class="pdp-variant-group" data-option-index="{{ forloop.index0 }}">
+            <p class="pdp-variant-label">{{ option.name }}:</p>
+            <div class="pdp-variant-options" role="group" aria-label="{{ option.name }}">
+              {%- for value in option.values -%}
+                {%- liquid
+                  assign variant_for_value = product.variants | where: 'option1', value | first
+                  if option.position == 2
+                    assign variant_for_value = product.variants | where: 'option2', value | first
+                  elsif option.position == 3
+                    assign variant_for_value = product.variants | where: 'option3', value | first
+                  endif
+                  assign is_selected = false
+                  if current_variant[option.position ] == value
+                    assign is_selected = true
+                  endif
+                -%}
+                <button
+                  class="pdp-variant-btn{% if is_selected %} is-active{% endif %}{% unless variant_for_value.available %} is-sold-out{% endunless %}"
+                  data-value="{{ value | escape }}"
+                  data-option-index="{{ forloop.parentloop.index0 }}"
+                  aria-pressed="{{ is_selected }}"
+                  {% unless variant_for_value.available %}aria-disabled="true"{% endunless %}
+                >
+                  {{ value }}
+                  {%- unless variant_for_value.available -%}<span class="sr-only"> (sold out)</span>{%- endunless -%}
+                </button>
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endfor -%}
+        <hr class="pdp-divider">
+      {%- endunless -%}
+
+      {%- comment -%} ── Key Benefits (metafields or schema repeater) ── {%- endcomment -%}
+      {%- if section.blocks.size > 0 -%}
+        {%- assign benefit_blocks = section.blocks | where: 'type', 'benefit' -%}
+        {%- if benefit_blocks.size > 0 -%}
+          <div class="pdp-benefits">
+            <p class="pdp-benefits__label">Key Benefits:</p>
+            <ul class="pdp-benefits__grid">
+              {%- for block in benefit_blocks -%}
+                <li class="pdp-benefit-item" {{ block.shopify_attributes }}>
+                  <span
+                    class="pdp-benefit-dot"
+                    style="background:{{ block.settings.dot_color }}"
+                    aria-hidden="true"
+                  ></span>
+                  {{ block.settings.benefit_text }}
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+
+      {%- comment -%} ── Purchase Options (Selling Plans) ── {%- endcomment -%}
+      {%- if has_selling_plans -%}
+        <div class="pdp-purchase-options">
+          <p class="pdp-purchase-options__label">Purchase Options:</p>
+          <div class="pdp-po-list" role="radiogroup" aria-label="Purchase options">
+
+            {%- comment -%} One-time option {%- endcomment -%}
+            <label class="pdp-po-card is-selected" id="PO-onetime-{{ section.id }}">
+              <input
+                class="sr-only"
+                type="radio"
+                name="purchase-option-{{ section.id }}"
+                value="onetime"
+                checked
+                aria-checked="true"
+              >
+              <div class="pdp-po-card__body">
+                <div class="pdp-po-card__title">One-time Purchase</div>
+                <div class="pdp-po-card__sub">
+                  {{ current_variant.price | money }} per {{ section.settings.unit_label | default: 'bottle' }}
+                </div>
+              </div>
+              <span class="pdp-po-radio" aria-hidden="true"></span>
+            </label>
+
+            {%- comment -%} Selling plan groups {%- endcomment -%}
+            {%- for group in product.selling_plan_groups -%}
+              {%- assign first_plan = group.selling_plans | first -%}
+              {%- for plan in group.selling_plans limit: 1 -%}
+                {%- liquid
+                  assign plan_price_adj = nil
+                  for adj in plan.price_adjustments
+                    assign plan_price_adj = adj
+                  endfor
+                  assign save_pct = 0
+                  if plan_price_adj.value_type == 'percentage'
+                    assign save_pct = plan_price_adj.value
+                  endif
+                -%}
+                <label
+                  class="pdp-po-card"
+                  id="PO-plan-{{ plan.id }}-{{ section.id }}"
+                  data-selling-plan-id="{{ plan.id }}"
+                >
+                  {%- if save_pct > 0 -%}
+                    <span class="pdp-po-savetag">Save {{ save_pct }}%</span>
+                  {%- endif -%}
+                  <input
+                    class="sr-only"
+                    type="radio"
+                    name="purchase-option-{{ section.id }}"
+                    value="{{ plan.id }}"
+                    aria-checked="false"
+                  >
+                  <div class="pdp-po-card__body">
+                    <div class="pdp-po-card__title">{{ group.name }}</div>
+                    <div class="pdp-po-card__sub">
+                      {%- if save_pct > 0 -%}
+                        {%- assign discounted = current_variant.price | times: save_pct | divided_by: 100 -%}
+                        {%- assign final_price = current_variant.price | minus: discounted -%}
+                        {{ final_price | money }} per {{ section.settings.unit_label | default: 'bottle' }} &middot; {{ plan.name }}
+                      {%- else -%}
+                        {{ current_variant.price | money }} &middot; {{ plan.name }}
+                      {%- endif -%}
+                    </div>
+                  </div>
+                  <span class="pdp-po-radio" aria-hidden="true"></span>
+                </label>
+              {%- endfor -%}
+            {%- endfor -%}
+
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} ── Product Form ── {%- endcomment -%}
+      {%- form 'product', product,
+        id: product_form_id,
+        class: 'pdp-product-form',
+        novalidate: true,
+        data-type: 'add-to-cart-form'
+      -%}
+        <input type="hidden" name="id" value="{{ current_variant.id }}" id="VariantId-{{ section.id }}">
+        {%- if has_selling_plans -%}
+          <input type="hidden" name="selling_plan" id="SellingPlan-{{ section.id }}" value="">
+        {%- endif -%}
+
+        {%- comment -%} Qty + Add to Cart {%- endcomment -%}
+        <div class="pdp-atc-row">
+          <div class="pdp-qty" role="group" aria-label="Quantity">
+            <button
+              type="button"
+              class="pdp-qty__btn"
+              data-action="minus"
+              aria-label="{{ 'products.product.quantity.decrease' | t }}"
+            >&#8722;</button>
+            <input
+              class="pdp-qty__input"
+              type="number"
+              name="quantity"
+              id="Qty-{{ section.id }}"
+              value="1"
+              min="1"
+              aria-label="{{ 'products.product.quantity.label' | t }}"
+            >
+            <button
+              type="button"
+              class="pdp-qty__btn"
+              data-action="plus"
+              aria-label="{{ 'products.product.quantity.increase' | t }}"
+            >+</button>
+          </div>
+
+          <button
+            type="submit"
+            class="pdp-btn-atc"
+            id="AtcBtn-{{ section.id }}"
+            {% unless current_variant.available %}disabled{% endunless %}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            <span class="pdp-btn-atc__text">
+              {%- if current_variant.available -%}
+                {{ 'products.product.add_to_cart' | t }}
+              {%- else -%}
+                {{ 'products.product.sold_out' | t }}
+              {%- endif -%}
+            </span>
+            <span class="pdp-btn-atc__spinner" aria-hidden="true" hidden>
+              <svg class="pdp-spinner" viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="60" stroke-linecap="round"/></svg>
+            </span>
+          </button>
+        </div>
+
+        {%- comment -%} Error message {%- endcomment -%}
+        <p class="pdp-form-error" id="AtcError-{{ section.id }}" role="alert" hidden></p>
+
+      {%- endform -%}
+
+      {%- comment -%} ── Save & Share ── {%- endcomment -%}
+      <div class="pdp-sec-row">
+        <button
+          type="button"
+          class="pdp-btn-sec pdp-btn-wishlist"
+          data-product-id="{{ product.id }}"
+          data-variant-id="{{ current_variant.id }}"
+          aria-label="Save to wishlist"
+          aria-pressed="false"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="pdp-heart-icon"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          Save
+        </button>
+        <button
+          type="button"
+          class="pdp-btn-sec pdp-btn-share"
+          data-share-title="{{ product.title | escape }}"
+          data-share-url="{{ shop.url }}{{ product.url }}"
+          aria-label="Share this product"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          Share
+        </button>
+      </div>
+
+      {%- comment -%} ── Trust Badges ── {%- endcomment -%}
+      {%- assign trust_blocks = section.blocks | where: 'type', 'trust_badge' -%}
+      {%- if trust_blocks.size > 0 -%}
+        <div class="pdp-trust-grid">
+          {%- for block in trust_blocks -%}
+            <div class="pdp-trust-item" {{ block.shopify_attributes }}>
+              <div class="pdp-trust-icon">
+                {%- if block.settings.icon != blank -%}
+                  {{ block.settings.icon }}
+                {%- else -%}
+                  {%- render 'pdp-trust-icon', icon: block.settings.icon_preset -%}
+                {%- endif -%}
+              </div>
+              <span class="pdp-trust-label">{{ block.settings.label }}</span>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+    </div>
+    {%- comment -%} /pdp-info {%- endcomment -%}
+
+  </div>
+  {%- comment -%} /pdp-layout {%- endcomment -%}
+
+</div>
+{%- comment -%} /pdp-section {%- endcomment -%}
+
+{%- comment -%} ── Hidden data for JS ── {%- endcomment -%}
+<script type="application/json" id="ProductJson-{{ section.id }}">
+  {
+    "id": {{ product.id | json }},
+    "title": {{ product.title | json }},
+    "handle": {{ product.handle | json }},
+    "variants": [
+      {%- for variant in product.variants -%}
+        {
+          "id": {{ variant.id }},
+          "title": {{ variant.title | json }},
+          "price": {{ variant.price }},
+          "compare_at_price": {{ variant.compare_at_price | default: 0 }},
+          "available": {{ variant.available }},
+          "sku": {{ variant.sku | json }},
+          "option1": {{ variant.option1 | json }},
+          "option2": {{ variant.option2 | json }},
+          "option3": {{ variant.option3 | json }},
+          "featured_image": {%- if variant.featured_image -%}{{ variant.featured_image | image_url: width: 800 | json }}{%- else -%}null{%- endif -%}
+        }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ],
+    "selling_plan_groups": [
+      {%- for group in product.selling_plan_groups -%}
+        {
+          "id": {{ group.id | json }},
+          "name": {{ group.name | json }},
+          "selling_plans": [
+            {%- for plan in group.selling_plans -%}
+              {
+                "id": {{ plan.id }},
+                "name": {{ plan.name | json }},
+                "price_adjustments": [
+                  {%- for adj in plan.price_adjustments -%}
+                    {
+                      "value": {{ adj.value }},
+                      "value_type": {{ adj.value_type | json }}
+                    }{% unless forloop.last %},{% endunless %}
+                  {%- endfor -%}
+                ]
+              }{% unless forloop.last %},{% endunless %}
+            {%- endfor -%}
+          ]
+        }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Sea Buckthorn PDP",
+  "tag": "section",
+  "class": "pdp-section-wrapper",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Badges"
+    },
+    {
+      "type": "text",
+      "id": "badge_bestseller",
+      "label": "Best Seller badge text",
+      "default": "Best Seller"
+    },
+    {
+      "type": "header",
+      "content": "Rating"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_static_rating",
+      "label": "Show static rating (if no metafields)",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "static_rating",
+      "label": "Static rating value",
+      "min": 1,
+      "max": 5,
+      "step": 0.1,
+      "default": 4.8
+    },
+    {
+      "type": "text",
+      "id": "static_review_count",
+      "label": "Static review count label",
+      "default": "500+ reviews"
+    },
+    {
+      "type": "header",
+      "content": "Product Details"
+    },
+    {
+      "type": "text",
+      "id": "unit_label",
+      "label": "Unit label (e.g. bottle, pack)",
+      "default": "bottle"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sku",
+      "label": "Show variant SKU",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Key Benefit",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "benefit_text",
+          "label": "Benefit text",
+          "default": "Boost Immunity"
+        },
+        {
+          "type": "color",
+          "id": "dot_color",
+          "label": "Dot colour",
+          "default": "#e07b29"
+        }
+      ]
+    },
+    {
+      "type": "trust_badge",
+      "name": "Trust Badge",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Badge label",
+          "default": "Free Shipping"
+        },
+        {
+          "type": "select",
+          "id": "icon_preset",
+          "label": "Icon preset",
+          "options": [
+            { "value": "truck",   "label": "Truck (Shipping)" },
+            { "value": "shield",  "label": "Shield (Quality)" },
+            { "value": "refresh", "label": "Refresh (Returns)" },
+            { "value": "lock",    "label": "Lock (Secure)" }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Custom SVG icon (overrides preset)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sea Buckthorn PDP",
+      "blocks": [
+        { "type": "benefit", "settings": { "benefit_text": "Boost Immunity",    "dot_color": "#e07b29" } },
+        { "type": "benefit", "settings": { "benefit_text": "Gut Health",        "dot_color": "#2d7a44" } },
+        { "type": "benefit", "settings": { "benefit_text": "Skin Nourishment",  "dot_color": "#e07b29" } },
+        { "type": "benefit", "settings": { "benefit_text": "Heart Health",      "dot_color": "#2d7a44" } },
+        { "type": "trust_badge", "settings": { "label": "Free Shipping",   "icon_preset": "truck"   } },
+        { "type": "trust_badge", "settings": { "label": "Quality Assured", "icon_preset": "shield"  } },
+        { "type": "trust_badge", "settings": { "label": "Easy Returns",    "icon_preset": "refresh" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

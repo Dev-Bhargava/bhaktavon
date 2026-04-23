@@ -127,7 +127,7 @@
       
       Here : {{ rating_value }}
 
-      {%- if rating_value != nil or section.settings.show_static_rating -%}
+      {%- if rating_value == nil or section.settings.show_static_rating -%}
         {%- render 'pdp-rating',
           rating: rating_value | default: section.settings.static_rating,
           count: rating_count | default: section.settings.static_review_count

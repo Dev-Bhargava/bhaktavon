@@ -125,7 +125,7 @@
         assign rating_count = product.metafields.reviews.rating_count.value | default: nil
       -%}
       {%- if rating_value != nil or section.settings.show_static_rating -%}
-        {%- render 'pdp-rating',
+        {%- render 'star',
           rating: rating_value | default: section.settings.static_rating,
           count: rating_count | default: section.settings.static_review_count
         -%}
@@ -135,7 +135,7 @@
 
       {%- comment -%} ── Price ── {%- endcomment -%}
       <div class="pdp-price-block" id="PdpPrice-{{ section.id }}">
-        {% render 'price', product_resource: product, show_sale_price_first: true %}
+        {%- render 'pdp-price', variant: current_variant, product: product -%}
       </div>
 
       {%- comment -%} ── Volume / SKU ── {%- endcomment -%}

@@ -286,6 +286,7 @@
         class: 'pdp-product-form',
         novalidate: true,
         data-type: 'add-to-cart-form'
+        data-sections: 'cart-drawer'
       -%}
         <input type="hidden" name="id" value="{{ current_variant.id }}" id="VariantId-{{ section.id }}">
         {%- if has_selling_plans -%}

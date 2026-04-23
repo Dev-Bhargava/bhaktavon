@@ -121,16 +121,16 @@
 
       {%- comment -%} ── Rating (metafield-driven) ── {%- endcomment -%}
       {%- liquid
-        assign rating_value = product.metafields.reviews.rating.value | default: nil
-        assign rating_count = product.metafields.reviews.rating_count.value | default: nil
+        assign rating_value = section.settings.static_rating | default: nil
+        assign rating_count = section.settings.static_review_count | default: nil
       -%}
       
       Here : {{ section.settings.static_rating }}
 
-      {%- if rating_value == nil or section.settings.show_static_rating -%}
+      {%- if rating_value != nil or section.settings.show_static_rating -%}
         {%- render 'pdp-rating',
-          rating: rating_value | default: section.settings.static_rating,
-          count: rating_count | default: section.settings.static_review_count
+          rating: rating_value,
+          count: rating_count
         -%}
       {%- endif -%}
 

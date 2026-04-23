@@ -346,7 +346,7 @@
       "settings": {
         "badge_bestseller": "Best Seller",
         "show_static_rating": true,
-        "static_rating": 4,
+        "static_rating": 5,
         "static_review_count": "500+ reviews",
         "unit_label": "bottle",
         "show_sku": true

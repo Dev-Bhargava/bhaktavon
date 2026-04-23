@@ -17,7 +17,7 @@
         "heading": "Pure Sea Buckthorn.Real Benefits.",
         "subtext": "Science-backed wellness in every bottle. Boost immunity, support gut health, and nourish your skin naturally.",
         "product_image": "shopify://shop_images/WhatsApp_Image_2026-03-28_at_2.22.51_PM_1.jpg",
-        "cta_text": "Shop Bhaktavon Juice",
+        "cta_text": "Shop Buckthorn Juice",
         "cta_link": "shopify://products/pure-sea-buckthorn-juice",
         "secondary_text": "Learn More",
         "secondary_link": "shopify://products/pure-sea-buckthorn-juice"
@@ -239,7 +239,7 @@
       "name": "Wellness Ritual Banner",
       "settings": {
         "heading": "Your Daily Wellness Ritual",
-        "description": "Make Bhaktavon part of your morning routine for consistent health benefits. Many users report feeling more energized and notice improvements in their skin within 2-3 weeks of regular use."
+        "description": "Make Buckthorn part of your morning routine for consistent health benefits. Many users report feeling more energized and notice improvements in their skin within 2-3 weeks of regular use."
       }
     },
     "trust_quality_kGqJCE": {
@@ -301,7 +301,7 @@
         "review_JUVWfP": {
           "type": "review",
           "settings": {
-            "review": "I've been taking Bhaktavon for 3 weeks now and I can already see improvements in my skin. It's glowing! The taste is tart but manageable when mixed with orange juice.",
+            "review": "I've been taking Buckthorn for 3 weeks now and I can already see improvements in my skin. It's glowing! The taste is tart but manageable when mixed with orange juice.",
             "star_count": "5",
             "name": "Priya Sharma",
             "location": "Mumbai · January 2026"
@@ -681,7 +681,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Everything you need to know about Bhaktavon Sea Buckthorn Juice.</p>",
+            "text": "<p>Everything you need to know about Buckthorn Sea Buckthorn Juice.</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",

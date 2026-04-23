@@ -1,158 +1,88 @@
-.custom-product-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: 40px;
-  align-items: center;
+.custom-product-wrapper { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center; }
+
+/* GALLERY */ .main-media img { width: 100%; border-radius: 16px; }
+
+.thumbnail-row { display: flex; gap: 10px; margin-top: 10px; }
+
+.thumb { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 1px solid #eee; }
+
+/* DETAILS */ .custom-product-details { max-width: 480px; }
+
+/* BADGES */ .product-badges { display: flex; gap: 8px; }
+
+.badge { padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+
+.badge--orange { background:#ffe7d6; color:#ff7a00; } .badge--green { background:#e6f4ea; color:#2e7d32; }
+
+/* TITLE */ .product-title { font-size: 28px; font-weight: 700; }
+
+/* PRICE */ .product-price { display: flex; gap: 10px; align-items: center; }
+
+.price-current { font-size: 28px; font-weight: 700; }
+
+.price-old { text-decoration: line-through; color: #888; }
+
+.price-save { background: #e6f4ea; color: #2e7d32; padding: 4px 10px; border-radius: 20px; font-size: 12px; }
+
+/* VARIANTS */ .variant-group { margin: 15px 0; }
+
+.variant-options { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.variant-btn { padding: 8px 12px; border: 1px solid #ddd; background: #fff; border-radius: 8px; cursor: pointer; }
+
+.variant-btn.active { border-color: #ff7a00; background: #fff7f0; }
+
+/* PURCHASE */ .option { border: 2px solid #eee; padding: 14px; border-radius: 12px; margin-bottom: 10px; cursor:
+pointer; }
+
+.option.active { border-color: #ff7a00; background: #fff7f0; }
+
+/* ACTIONS */ .product-actions { display: flex; gap: 10px; margin-top: 15px; }
+
+.qty { display: flex; border: 1px solid #ddd; border-radius: 10px; }
+
+.qty button { padding: 10px; border: none; background: #fff; }
+
+.qty input { width: 40px; text-align: center; border: none; }
+
+.add-to-cart { flex: 1; background: #ff7a00; color: #fff; border: none; border-radius: 10px; }
+
+/* TRUST */ .trust-badges { display: flex; justify-content: space-between; margin-top: 20px; font-size: 12px; }
+
+<script>
+    function changeImage(el) {
+  document.getElementById('main-product-image').src = el.dataset.full;
 }
 
-/* GALLERY */
-.main-media img {
-  width: 100%;
-  border-radius: 16px;
-}
+const product = {{ section.settings.product | json }};
+let selected = {};
 
-.thumbnail-row {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
+document.querySelectorAll('.variant-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
 
-.thumb {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 8px;
-  cursor: pointer;
-  border: 1px solid #eee;
-}
+    const index = btn.dataset.option - 1;
+    selected[index] = btn.dataset.value;
 
-/* DETAILS */
-.custom-product-details {
-  max-width: 480px;
-}
+    document.querySelectorAll(`[data-option="${btn.dataset.option}"]`)
+      .forEach(b => b.classList.remove('active'));
 
-/* BADGES */
-.product-badges {
-  display: flex;
-  gap: 8px;
-}
+    btn.classList.add('active');
 
-.badge {
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-}
+    const variant = product.variants.find(v =>
+      v.options.every((opt, i) => opt === selected[i])
+    );
 
-.badge--orange { background:#ffe7d6; color:#ff7a00; }
-.badge--green { background:#e6f4ea; color:#2e7d32; }
+    if (variant) {
+      document.getElementById('variant-id').value = variant.id;
 
-/* TITLE */
-.product-title {
-  font-size: 28px;
-  font-weight: 700;
-}
+      document.getElementById('price-current').innerHTML =
+        Shopify.formatMoney(variant.price);
 
-/* PRICE */
-.product-price {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.price-current {
-  font-size: 28px;
-  font-weight: 700;
-}
-
-.price-old {
-  text-decoration: line-through;
-  color: #888;
-}
-
-.price-save {
-  background: #e6f4ea;
-  color: #2e7d32;
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 12px;
-}
-
-/* VARIANTS */
-.variant-group {
-  margin: 15px 0;
-}
-
-.variant-options {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.variant-btn {
-  padding: 8px 12px;
-  border: 1px solid #ddd;
-  background: #fff;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.variant-btn.active {
-  border-color: #ff7a00;
-  background: #fff7f0;
-}
-
-/* PURCHASE */
-.option {
-  border: 2px solid #eee;
-  padding: 14px;
-  border-radius: 12px;
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-
-.option.active {
-  border-color: #ff7a00;
-  background: #fff7f0;
-}
-
-/* ACTIONS */
-.product-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.qty {
-  display: flex;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-}
-
-.qty button {
-  padding: 10px;
-  border: none;
-  background: #fff;
-}
-
-.qty input {
-  width: 40px;
-  text-align: center;
-  border: none;
-}
-
-.add-to-cart {
-  flex: 1;
-  background: #ff7a00;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-}
-
-/* TRUST */
-.trust-badges {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-  font-size: 12px;
-}
+      if (variant.compare_at_price > variant.price) {
+        document.getElementById('price-old').innerHTML =
+          Shopify.formatMoney(variant.compare_at_price);
+      }
+    }
+  });
+});
+</script>

@@ -42,3 +42,29 @@
     {{ count }} reviews
   </a>
 </div>
+
+<div style="display: flex; justify-content: center; align-items: center">
+      <div class="rating-summary">
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center">
+          <div class="rating-number">
+            {{ rating }}
+          </div>
+
+          {% assign avg_rating = section.settings.rating | round | plus: 0 %}
+          <div class="rating-stars">
+            {% for i in (1..5) %}
+              {% if i <= avg_rating %}
+                {% render 'star', class: 'active' %}
+              {% else %}
+                {% render 'star' %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="divider"> </div>
+        <div class="rating-text">
+          Based on <br>
+          <strong>{{ count }}+ reviews</strong>
+        </div>
+      </div>
+    </div>

@@ -30,8 +30,8 @@
 </style>
 
 <div style="display: flex; justify-content: center; align-items: center">
-  <div class="rating-summary" style="display: flex; justify-content: center; align-items: center; gap: 10px">
-    <div style="display: flex; justify-content: center; align-items: center">
+  <div class="rating-summary" style="display: flex; justify-content: center;">
+    <div style="display: flex; justify-content: center; align-items: center; gap: 10px">
       {% assign avg_rating = rating | round | plus: 0 %}
       <div class="rating-stars">
         {% for i in (1..5) %}

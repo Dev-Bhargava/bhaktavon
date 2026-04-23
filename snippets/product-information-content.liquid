@@ -23,38 +23,7 @@
   {% capture additional_blocks %}
     {% content_for 'blocks' %}
   {% endcapture %}
-  {% capture media_gallery %}
-  <style>
-    .product-badges {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 10px;
-    }
-
-    .badge {
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    .badge--orange {
-      background: #ffe7d6;
-      color: #ff7a00;
-    }
-
-    .badge--green {
-      background: #e6f4ea;
-      color: #2e7d32;
-    }
-  </style>
-
-  <div class="product-badges">
-    <span class="badge badge--orange">Best Seller</span>
-    <span class="badge badge--green">In Stock</span>
-  </div>
-
-{% endcapture %}
+  
   {% render 'product-information-content',
     product_media_size: product.media.size,
     section_id: section.id,

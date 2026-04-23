@@ -25,7 +25,7 @@
     </span>
     {%- if on_sale -%}
       <span class="pdp-price__orig" data-pdp-price-orig>
-        ₹ <s>{{ compare_at_price | money_without_currency }}</s>
+        <s>₹ {{ compare_at_price | money_without_currency }}</s>
       </span>
       <span class="pdp-price__save">Save {{ save_pct }}%</span>
     {%- endif -%}

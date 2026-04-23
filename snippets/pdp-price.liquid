@@ -1,0 +1,33 @@
+
+{%- comment -%}
+  Snippet: pdp-price.liquid
+  Params:
+    variant  — the current variant object
+    product  — the product object
+  Renders the price block: current price, compare-at (strike), save badge.
+{%- endcomment -%}
+
+{%- liquid
+  assign current_price     = variant.price
+  assign compare_at_price  = variant.compare_at_price
+  assign on_sale           = false
+  if compare_at_price > current_price
+    assign on_sale = true
+    assign saved_amount = compare_at_price | minus: current_price
+    assign save_pct = saved_amount | times: 100 | divided_by: compare_at_price | round
+  endif
+-%}
+
+<div class="pdp-price" data-pdp-price>
+  <div class="pdp-price__row">
+    <span class="pdp-price__current" data-pdp-price-current>
+      {{ current_price | money }}
+    </span>
+    {%- if on_sale -%}
+      <span class="pdp-price__orig" data-pdp-price-orig>
+        <s>{{ compare_at_price | money }}</s>
+      </span>
+      <span class="pdp-price__save">Save {{ save_pct }}%</span>
+    {%- endif -%}
+  </div>
+</div>

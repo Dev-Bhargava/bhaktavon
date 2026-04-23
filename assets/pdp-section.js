@@ -1,12 +1,12 @@
 /**
  * pdp-section.js  —  Sea Buckthorn PDP  |  Shopify Horizon
- * v4 — Cart drawer fix using Horizon's exact CartAddEvent mechanism
+ * v6 — FINAL FIX applied to your v4 code
  *
- * How Horizon opens the cart drawer (from product-form.js source):
- *   1. Collect section IDs from all <cart-items-component data-section-id="...">
- *   2. Append those IDs as `sections` field in FormData sent to cart_add_url
- *   3. On success, dispatch `new CartAddEvent(response, id, { source, sections: response.sections })`
- *   4. Horizon's cart-drawer-component listens for CartAddEvent → morphs & opens itself
+ * Changes from v4:
+ *  1. horizonAddToCart() now RETURNS response (was void)
+ *  2. Replaced broken `import('@theme/events')` with plain CustomEvent('cart:update')
+ *  3. Added openCartDrawer() — fires 'cart:update' + calls showDialog() directly
+ *  4. initAddToCart() now captures response and calls openCartDrawer(response, payload)
  */
 
 (function () {
@@ -47,34 +47,64 @@
       throw new Error(response.description || response.message || 'Could not add to cart.');
     }
 
-    // Step 4: dispatch CartAddEvent exactly like Horizon's product-form.js
-    // Horizon's cart-drawer-component listens for this event on document
-    const variantId = payload.id.toString();
-    try {
-      const { CartAddEvent } = await import('@theme/events');
-      document.dispatchEvent(
-        new CartAddEvent(response, variantId, {
+    // ✅ CHANGED: return response so initAddToCart can use it
+    return response;
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     ✅ NEW: openCartDrawer — replaces the broken import('@theme/events')
+     CartAddEvent.eventName === 'cart:update' (from Horizon's events.js source)
+     cart-drawer-component.showDialog() must be called directly because
+     the drawer only auto-opens if [auto-open] attribute is present
+  ───────────────────────────────────────────────────────────── */
+  function openCartDrawer(response, payload) {
+    // Fire Horizon's native 'cart:update' event (= CartAddEvent.eventName)
+    document.dispatchEvent(new CustomEvent('cart:update', {
+      bubbles: true,
+      detail: {
+        resource: response,
+        sourceId: payload.id.toString(),
+        data: {
           source:    'product-form-component',
           itemCount: Number(payload.quantity) || 1,
           sections:  response.sections || {},
-        })
-      );
-    } catch (_) {
-      // @theme/events not available — use fallback
-      await fallbackOpenCartDrawer(response);
+          didError:  false,
+        },
+      },
+    }));
+
+    // Call showDialog() directly on the Horizon cart drawer component
+    // This bypasses the [auto-open] guard in cart-drawer.js
+    const cartDrawer = document.querySelector('cart-drawer-component');
+    if (cartDrawer) {
+      cartDrawer.setAttribute('auto-open', ''); // ensure future events also work
+      if (typeof cartDrawer.showDialog === 'function') {
+        cartDrawer.showDialog();
+        return;
+      }
+      if (typeof cartDrawer.open === 'function') {
+        cartDrawer.open();
+        return;
+      }
     }
 
-    // Also update cart bubble count
-    updateCartBubble();
-
-    return response;
+    // Fallback for non-Horizon themes
+    const drawerSelectors = ['cart-drawer', '#CartDrawer', '.cart-drawer'];
+    for (const sel of drawerSelectors) {
+      const el = document.querySelector(sel);
+      if (el) {
+        if (typeof el.open === 'function') { el.open(); break; }
+        el.classList.add('is-open', 'active', 'open');
+        el.setAttribute('aria-hidden', 'false');
+        break;
+      }
+    }
   }
 
   /* ─────────────────────────────────────────────────────────────
      FALLBACK — for non-Horizon or older theme versions
   ───────────────────────────────────────────────────────────── */
   async function fallbackOpenCartDrawer(addResponse) {
-    // Morph cart-drawer HTML using sections response if available
     if (addResponse && addResponse.sections) {
       const parser = new DOMParser();
       Object.entries(addResponse.sections).forEach(([sectionId, html]) => {
@@ -85,36 +115,27 @@
       });
     }
 
-    // Try opening the drawer via known selectors
-    const drawerSelectors = ['cart-drawer-component', 'cart-drawer', '#CartDrawer', '.cart-drawer'];
-    for (const sel of drawerSelectors) {
-      const el = document.querySelector(sel);
-      if (el) {
-        if (typeof el.open === 'function') { el.open(); break; }
-        el.classList.add('is-open', 'active', 'open');
-        el.setAttribute('aria-hidden', 'false');
-        break;
-      }
-    }
-
-    // Fire custom events (some themes listen)
     ['cart:open', 'cart:refresh', 'cart:updated'].forEach(name =>
       document.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: addResponse }))
     );
 
-    // Click the cart icon as last resort
     const toggleEl = document.querySelector('[data-cart-toggle], [aria-controls="CartDrawer"], #cart-icon-bubble');
     if (toggleEl) toggleEl.click();
   }
 
-  async function updateCartBubble() {
+  async function updateCartBubble(addResponse) {
     try {
-      const res  = await fetch('/cart.js', { headers: { 'X-Requested-With': 'XMLHttpRequest' } });
-      const cart = await res.json();
-      const count = cart.item_count;
+      let count;
+      if (addResponse && addResponse.items) {
+        count = addResponse.items.reduce((sum, item) => sum + item.quantity, 0);
+      } else {
+        const res  = await fetch('/cart.js', { headers: { 'X-Requested-With': 'XMLHttpRequest' } });
+        const cart = await res.json();
+        count = cart.item_count;
+      }
       [
         '[data-cart-count]', '[data-cart-bubble]', '[data-cart-icon-bubble]',
-        '#cart-icon-bubble', '.cart-count', '[data-header-cart-quantity]',
+        '#cart-icon-bubble', '.cart-count', '.cart-count-bubble', '[data-header-cart-quantity]',
       ].forEach(sel => document.querySelectorAll(sel).forEach(el => {
         el.textContent = count;
         el.classList.toggle('hidden', count === 0);
@@ -156,7 +177,14 @@
       };
 
       try {
-        await horizonAddToCart(payload);
+        // ✅ CHANGED: capture response (was just `await horizonAddToCart(payload)`)
+        const response = await horizonAddToCart(payload);
+
+        // ✅ NEW: open the cart drawer using response + payload
+        openCartDrawer(response, payload);
+
+        // ✅ NEW: update header cart bubble count
+        updateCartBubble(response);
 
         btn.disabled = false;
         btn.classList.remove('is-loading');

@@ -273,6 +273,7 @@
     },
     "custom_product_featured_8Bdznq": {
       "type": "custom-product-featured",
+      "disabled": true,
       "name": "Custom Product UI",
       "settings": {}
     },
@@ -366,7 +367,7 @@
   "order": [
     "main",
     "custom_product_featured_8Bdznq",
-    "custom_liquid_JyzrQe",
-    "main_product_VBcz4i"
+    "main_product_VBcz4i",
+    "custom_liquid_JyzrQe"
   ]
 }

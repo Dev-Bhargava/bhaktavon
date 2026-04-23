@@ -35,6 +35,13 @@
       {%- render 'theme-editor' -%}
     {% endif %}
 
+    {% if template.name == 'product' %}
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300..700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+      {{ 'pdp-section.css' | asset_url | stylesheet_tag }}
+    {% endif %}
+
     {{ content_for_header }}
   </head>
 

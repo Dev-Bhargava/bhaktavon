@@ -73,6 +73,7 @@
       if (mainImg) {
         mainImg.style.opacity = '.35';
         mainImg.src = src;
+        mainImg.srcset = '';
         mainImg.onload = () => { mainImg.style.opacity = '1'; };
       }
     }
@@ -157,6 +158,7 @@
           const mainImg = document.getElementById(`MainProductImage-${this.sectionId}`);
           if (mainImg) {
             mainImg.style.opacity = '.35';
+            mainImg.srcset = '';
             mainImg.src = variant.featured_image;
             mainImg.onload = () => { mainImg.style.opacity = '1'; };
           }

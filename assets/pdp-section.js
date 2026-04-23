@@ -177,13 +177,10 @@
       };
 
       try {
-        // ✅ CHANGED: capture response (was just `await horizonAddToCart(payload)`)
         const response = await horizonAddToCart(payload);
 
-        // ✅ NEW: open the cart drawer using response + payload
         openCartDrawer(response, payload);
 
-        // ✅ NEW: update header cart bubble count
         updateCartBubble(response);
 
         btn.disabled = false;
@@ -256,6 +253,7 @@
     const selectedOpts = {};
 
     container.querySelectorAll('.pdp-variant-btn.is-active').forEach(btn => {
+    btn.classList.add('is-selected');
       selectedOpts[parseInt(btn.dataset.optionIndex, 10)] = btn.dataset.value;
     });
 
@@ -303,17 +301,24 @@
     }
 
     container.querySelectorAll('.pdp-variant-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const idx = parseInt(btn.dataset.optionIndex, 10);
-        container.querySelectorAll(`.pdp-variant-btn[data-option-index="${idx}"]`).forEach(b => {
-          b.classList.remove('is-active'); b.setAttribute('aria-pressed', 'false');
-        });
-        btn.classList.add('is-active'); btn.setAttribute('aria-pressed', 'true');
-        selectedOpts[idx] = btn.dataset.value;
-        const variant = findVariant();
-        if (variant) updateUI(variant);
-      });
+  btn.addEventListener('click', () => {
+    const idx = parseInt(btn.dataset.optionIndex, 10);
+
+    // Remove is-active + is-selected from all buttons in same option group
+    container.querySelectorAll(`.pdp-variant-btn[data-option-index="${idx}"]`).forEach(b => {
+      b.classList.remove('is-active', 'is-selected');
+      b.setAttribute('aria-pressed', 'false');
     });
+
+    // Add is-active + is-selected to clicked button
+    btn.classList.add('is-active', 'is-selected');
+    btn.setAttribute('aria-pressed', 'true');
+
+    selectedOpts[idx] = btn.dataset.value;
+    const variant = findVariant();
+    if (variant) updateUI(variant);
+  });
+});
   }
 
   /* ─────────────────────────────────────────────────────────────

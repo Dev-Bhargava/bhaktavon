@@ -5,27 +5,51 @@
     count   — string or number (e.g. "500+")
 {%- endcomment -%}
 
-<div style="display: flex; justify-content: center; align-items: center">
-    <div class="rating-summary">
-        <div class="rating-number">
-        {{ rating }}
-        </div>
-    <div style="display: flex; flex-direction: row; justify-content: center; align-items: center">
+<style>
+    .rating-stars{
+    color: #ff7a2f;
+    font-size:20px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
 
-        {% assign avg_rating = section.settings.rating | round | plus: 0 %}
-        <div class="rating-stars">
+  .rating-stars svg{
+    width: 20px;
+    stroke : oklch(0.872 0.01 258.338);
+  }
+
+  .rating-stars svg.active{
+    stroke : #ff7a2f;
+    fill: #ff7a2f;
+  }
+
+  .rating-text{
+    color:#555;
+  }
+</style>
+
+<div style="display: flex; justify-content: center; align-items: center">
+  <div class="rating-summary">
+    <div style="display: flex; flex-direction: row; justify-content: center; align-items: center">
+      <div class="rating-number">
+        {{ rating }}
+      </div>
+
+      {% assign avg_rating = section.settings.rating | round | plus: 0 %}
+      <div class="rating-stars">
         {% for i in (1..5) %}
-            {% if i <= avg_rating %}
+          {% if i <= avg_rating %}
             {% render 'star', class: 'active' %}
-            {% else %}
+          {% else %}
             {% render 'star' %}
-            {% endif %}
+          {% endif %}
         {% endfor %}
-        </div>
+      </div>
     </div>
-    <div class="divider"> </div>
+    <div class="divider"></div>
     <div class="rating-text">
-        <strong>{{ count }}</strong>
+      <strong>{{ count }}</strong>
     </div>
-    </div>
+  </div>
 </div>

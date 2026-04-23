@@ -161,7 +161,7 @@
                   elsif option.position == 3
                     assign variant_for_value = product.variants | where: 'option3', value | first
                   endif
-                  assign is_selected = true
+                  assign is_selected = false
                   if current_variant[option.position ] == value
                     assign is_selected = true
                   endif

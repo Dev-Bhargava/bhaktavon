@@ -303,12 +303,12 @@
       </a>
     </div>
 
-    <div class="product-reviews">
-      ⭐⭐⭐⭐⭐ <span>4.8</span> | <span>500+ reviews</span>
-    </div>
     {% content_for 'blocks' %}
   {% endcapture %}
-
+  <div class="product-reviews">
+    ⭐⭐⭐⭐⭐ <span>4.8</span> | <span>500+ reviews</span>
+  </div>
+  
   {% render 'group', children: children, settings: block_settings, shopify_attributes: block.shopify_attributes %}
 </div>
 

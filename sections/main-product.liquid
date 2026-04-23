@@ -124,6 +124,9 @@
         assign rating_value = product.metafields.reviews.rating.value | default: nil
         assign rating_count = product.metafields.reviews.rating_count.value | default: nil
       -%}
+      
+      Here : {{ rating_value }}
+
       {%- if rating_value != nil or section.settings.show_static_rating -%}
         {%- render 'pdp-rating',
           rating: rating_value | default: section.settings.static_rating,

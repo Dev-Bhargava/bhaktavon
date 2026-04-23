@@ -1,53 +1,306 @@
-.custom-product-wrapper { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center; }
+<section class="custom-product">
+  <div class="custom-product-wrapper">
+    <!-- ================= LEFT: GALLERY ================= -->
+    <div class="custom-product-gallery">
+      {% assign first_media = section.settings.product.media.first %}
 
-/* GALLERY */ .main-media img { width: 100%; border-radius: 16px; }
+      <div class="main-media">
+        <img
+          id="main-product-image"
+          src="{{ first_media | image_url: width: 900 }}"
+          alt="{{ section.settings.product.title }}"
+        >
+      </div>
 
-.thumbnail-row { display: flex; gap: 10px; margin-top: 10px; }
+      {% if section.settings.product.media.size > 1 %}
+        <div class="thumbnail-row">
+          {% for media in section.settings.product.media %}
+            <img
+              class="thumb"
+              src="{{ media | image_url: width: 200 }}"
+              data-full="{{ media | image_url: width: 900 }}"
+              onclick="changeImage(this)"
+            >
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
 
-.thumb { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 1px solid #eee; }
+    <!-- ================= RIGHT: DETAILS ================= -->
+    <div class="custom-product-details">
+      <!-- BADGES -->
+      <div class="product-badges">
+        <span class="badge badge--orange">Best Seller</span>
 
-/* DETAILS */ .custom-product-details { max-width: 480px; }
+        {% if section.settings.product.available %}
+          <span class="badge badge--green">In Stock</span>
+        {% endif %}
+      </div>
 
-/* BADGES */ .product-badges { display: flex; gap: 8px; }
+      <!-- TITLE -->
+      <h2 class="product-title">
+        {{ section.settings.product.title }}
+      </h2>
 
-.badge { padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+      <!-- REVIEWS (SAFE APP SUPPORT) -->
+      <div class="product-reviews">
+        {% for block in section.blocks %}
+          {% if block.type == '@app' %}
+            {% render block %}
+          {% endif %}
+        {% endfor %}
+      </div>
 
-.badge--orange { background:#ffe7d6; color:#ff7a00; } .badge--green { background:#e6f4ea; color:#2e7d32; }
+      <!-- PRICE -->
+      {% assign v = section.settings.product.selected_or_first_available_variant %}
 
-/* TITLE */ .product-title { font-size: 28px; font-weight: 700; }
+      <div class="product-price">
+        <span class="price-current" id="price-current">
+          {{ v.price | money }}
+        </span>
 
-/* PRICE */ .product-price { display: flex; gap: 10px; align-items: center; }
+        {% if v.compare_at_price > v.price %}
+          <span class="price-old" id="price-old">
+            {{ v.compare_at_price | money }}
+          </span>
 
-.price-current { font-size: 28px; font-weight: 700; }
+          <span class="price-save">
+            Save {{ v.compare_at_price | minus: v.price | times: 100 | divided_by: v.compare_at_price }}%
+          </span>
+        {% endif %}
+      </div>
 
-.price-old { text-decoration: line-through; color: #888; }
+      <p class="product-subtext">500ml bottle (30 servings)</p>
 
-.price-save { background: #e6f4ea; color: #2e7d32; padding: 4px 10px; border-radius: 20px; font-size: 12px; }
+      <!-- ================= VARIANTS ================= -->
+      <form method="post" action="/cart/add">
+        <input type="hidden" name="id" id="variant-id" value="{{ v.id }}">
 
-/* VARIANTS */ .variant-group { margin: 15px 0; }
+        {% unless section.settings.product.has_only_default_variant %}
+          {% for option in section.settings.product.options_with_values %}
+            <div class="variant-group">
+              <label>{{ option.name }}</label>
 
-.variant-options { display: flex; gap: 8px; flex-wrap: wrap; }
+              <div class="variant-options">
+                {% for value in option.values %}
+                  <button
+                    type="button"
+                    class="variant-btn"
+                    data-option="{{ option.position }}"
+                    data-value="{{ value }}"
+                  >
+                    {{ value }}
+                  </button>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        {% endunless %}
 
-.variant-btn { padding: 8px 12px; border: 1px solid #ddd; background: #fff; border-radius: 8px; cursor: pointer; }
+        <!-- ================= PURCHASE OPTIONS ================= -->
+        <div class="purchase-options">
+          <h4>Purchase Options</h4>
 
-.variant-btn.active { border-color: #ff7a00; background: #fff7f0; }
+          <label class="option active">
+            <input type="radio" name="purchase" checked>
+            <div>
+              <strong>One-time Purchase</strong>
+              <p>{{ v.price | money }}</p>
+            </div>
+          </label>
 
-/* PURCHASE */ .option { border: 2px solid #eee; padding: 14px; border-radius: 12px; margin-bottom: 10px; cursor:
-pointer; }
+          <label class="option">
+            <input type="radio" name="purchase">
+            <div>
+              <strong>Subscribe & Save</strong>
+              <p>Save 10–15% monthly delivery</p>
+            </div>
+            <span class="save-badge">Save</span>
+          </label>
+        </div>
 
-.option.active { border-color: #ff7a00; background: #fff7f0; }
+        <!-- ================= ACTIONS ================= -->
+        <div class="product-actions">
+          <div class="qty">
+            <button type="button" onclick="this.nextElementSibling.stepDown()">-</button>
+            <input type="number" name="quantity" value="1" min="1">
+            <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+          </div>
 
-/* ACTIONS */ .product-actions { display: flex; gap: 10px; margin-top: 15px; }
+          <button type="submit" class="add-to-cart">Add to Cart</button>
+        </div>
+      </form>
 
-.qty { display: flex; border: 1px solid #ddd; border-radius: 10px; }
+      <!-- TRUST -->
+      <div class="trust-badges">
+        <div>🚚 Free Shipping</div>
+        <div>🛡 Quality Assured</div>
+        <div>🔁 Easy Returns</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-.qty button { padding: 10px; border: none; background: #fff; }
+<style>
+      .custom-product-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 40px;
+    align-items: center;
+  }
 
-.qty input { width: 40px; text-align: center; border: none; }
+  /* GALLERY */
+  .main-media img {
+    width: 100%;
+    border-radius: 16px;
+  }
 
-.add-to-cart { flex: 1; background: #ff7a00; color: #fff; border: none; border-radius: 10px; }
+  .thumbnail-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
 
-/* TRUST */ .trust-badges { display: flex; justify-content: space-between; margin-top: 20px; font-size: 12px; }
+  .thumb {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid #eee;
+  }
+
+  /* DETAILS */
+  .custom-product-details {
+    max-width: 480px;
+  }
+
+  /* BADGES */
+  .product-badges {
+    display: flex;
+    gap: 8px;
+  }
+
+  .badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .badge--orange { background:#ffe7d6; color:#ff7a00; }
+  .badge--green { background:#e6f4ea; color:#2e7d32; }
+
+  /* TITLE */
+  .product-title {
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  /* PRICE */
+  .product-price {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .price-current {
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  .price-old {
+    text-decoration: line-through;
+    color: #888;
+  }
+
+  .price-save {
+    background: #e6f4ea;
+    color: #2e7d32;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+  }
+
+  /* VARIANTS */
+  .variant-group {
+    margin: 15px 0;
+  }
+
+  .variant-options {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .variant-btn {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .variant-btn.active {
+    border-color: #ff7a00;
+    background: #fff7f0;
+  }
+
+  /* PURCHASE */
+  .option {
+    border: 2px solid #eee;
+    padding: 14px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+
+  .option.active {
+    border-color: #ff7a00;
+    background: #fff7f0;
+  }
+
+  /* ACTIONS */
+  .product-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+  }
+
+  .qty {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+  }
+
+  .qty button {
+    padding: 10px;
+    border: none;
+    background: #fff;
+  }
+
+  .qty input {
+    width: 40px;
+    text-align: center;
+    border: none;
+  }
+
+  .add-to-cart {
+    flex: 1;
+    background: #ff7a00;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+  }
+
+  /* TRUST */
+  .trust-badges {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-size: 12px;
+  }
+</style>
 
 <script>
     function changeImage(el) {

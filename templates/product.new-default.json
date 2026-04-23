@@ -274,9 +274,7 @@
     "custom_product_featured_8Bdznq": {
       "type": "custom-product-featured",
       "name": "Custom Product UI",
-      "settings": {
-        "product": "pure-sea-buckthorn-juice"
-      }
+      "settings": {}
     },
     "custom_liquid_JyzrQe": {
       "type": "custom-liquid",
@@ -288,11 +286,87 @@
         "padding-block-start": 60,
         "padding-block-end": 60
       }
+    },
+    "main_product_VBcz4i": {
+      "type": "main-product",
+      "blocks": {
+        "benefit_AgxDfy": {
+          "type": "benefit",
+          "settings": {
+            "benefit_text": "Boost Immunity",
+            "dot_color": "#e07b29"
+          }
+        },
+        "benefit_wVqRnH": {
+          "type": "benefit",
+          "settings": {
+            "benefit_text": "Gut Health",
+            "dot_color": "#2d7a44"
+          }
+        },
+        "benefit_7hbmrN": {
+          "type": "benefit",
+          "settings": {
+            "benefit_text": "Skin Nourishment",
+            "dot_color": "#e07b29"
+          }
+        },
+        "benefit_CpGaxd": {
+          "type": "benefit",
+          "settings": {
+            "benefit_text": "Heart Health",
+            "dot_color": "#2d7a44"
+          }
+        },
+        "trust_badge_cA4AeH": {
+          "type": "trust_badge",
+          "settings": {
+            "label": "Free Shipping",
+            "icon_preset": "truck",
+            "icon": ""
+          }
+        },
+        "trust_badge_R4bAch": {
+          "type": "trust_badge",
+          "settings": {
+            "label": "Quality Assured",
+            "icon_preset": "shield",
+            "icon": ""
+          }
+        },
+        "trust_badge_UqhiCU": {
+          "type": "trust_badge",
+          "settings": {
+            "label": "Easy Returns",
+            "icon_preset": "refresh",
+            "icon": ""
+          }
+        }
+      },
+      "block_order": [
+        "benefit_AgxDfy",
+        "benefit_wVqRnH",
+        "benefit_7hbmrN",
+        "benefit_CpGaxd",
+        "trust_badge_cA4AeH",
+        "trust_badge_R4bAch",
+        "trust_badge_UqhiCU"
+      ],
+      "name": "Sea Buckthorn PDP",
+      "settings": {
+        "badge_bestseller": "Best Seller",
+        "show_static_rating": true,
+        "static_rating": 4.8,
+        "static_review_count": "500+ reviews",
+        "unit_label": "bottle",
+        "show_sku": true
+      }
     }
   },
   "order": [
     "main",
     "custom_product_featured_8Bdznq",
-    "custom_liquid_JyzrQe"
+    "custom_liquid_JyzrQe",
+    "main_product_VBcz4i"
   ]
 }

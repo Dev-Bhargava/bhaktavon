@@ -297,10 +297,8 @@
 .pdp-trust-item {
   display:flex;flex-direction:column;align-items:center;gap:var(--pdp-sp2);
   text-align:center;padding:var(--pdp-sp4) var(--pdp-sp2);
-  background:var(--pdp-surface-off);border-radius:var(--pdp-rad-lg);
   transition:background var(--pdp-ease),box-shadow var(--pdp-ease);
 }
-.pdp-trust-item:hover { background:#fff;box-shadow:var(--pdp-sh-sm); }
 .pdp-trust-icon {
   width:40px;height:40px;background:#fff;border-radius:var(--pdp-rad-md);
   display:flex;align-items:center;justify-content:center;box-shadow:var(--pdp-sh-sm);

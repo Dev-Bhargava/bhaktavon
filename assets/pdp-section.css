@@ -300,7 +300,7 @@
   transition:background var(--pdp-ease),box-shadow var(--pdp-ease);
 }
 .pdp-trust-icon {
-  width:40px;height:40px;background:#fff;border-radius:var(--pdp-rad-md);
+  width:40px;height:40px;background:rgb(255, 245, 237);border-radius:var(--pdp-rad-md);
   display:flex;align-items:center;justify-content:center;box-shadow:var(--pdp-sh-sm);
 }
 .pdp-trust-label { font-size:var(--pdp-text-xs);color:var(--pdp-muted);font-weight:600; }

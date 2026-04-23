@@ -313,7 +313,7 @@
           "settings": {
             "label": "Free Shipping",
             "icon_preset": "truck",
-            "icon": ""
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-truck w-6 h-6 text-[#FF8C42]\" data-fg-ecvv134=\"1.25:1.14856:/src/app/components/ProductPage.tsx:227:19:11364:44:e:Truck::::::Dl9l\" data-fgid-ecvv134=\":r13n:\"><path d=\"M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2\"></path><path d=\"M15 18H9\"></path><path d=\"M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14\"></path><circle cx=\"17\" cy=\"18\" r=\"2\"></circle><circle cx=\"7\" cy=\"18\" r=\"2\"></circle></svg>"
           }
         },
         "trust_badge_R4bAch": {
@@ -321,7 +321,7 @@
           "settings": {
             "label": "Quality Assured",
             "icon_preset": "shield",
-            "icon": ""
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-shield w-6 h-6 text-[#FF8C42]\" data-fg-ecvv139=\"1.25:1.14856:/src/app/components/ProductPage.tsx:233:19:11704:45:e:Shield::::::B8zf\" data-fgid-ecvv139=\":r13r:\"><path d=\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\"></path></svg>"
           }
         },
         "trust_badge_UqhiCU": {
@@ -329,7 +329,7 @@
           "settings": {
             "label": "Easy Returns",
             "icon_preset": "refresh",
-            "icon": ""
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-repeat w-6 h-6 text-[#FF8C42]\" data-fg-ecvv144=\"1.25:1.14856:/src/app/components/ProductPage.tsx:239:19:12047:45:e:Repeat::::::BLAv\" data-fgid-ecvv144=\":r13v:\"><path d=\"m17 2 4 4-4 4\"></path><path d=\"M3 11v-1a4 4 0 0 1 4-4h14\"></path><path d=\"m7 22-4-4 4-4\"></path><path d=\"M21 13v1a4 4 0 0 1-4 4H3\"></path></svg>"
           }
         }
       },
@@ -346,7 +346,7 @@
       "settings": {
         "badge_bestseller": "Best Seller",
         "show_static_rating": true,
-        "static_rating": 5,
+        "static_rating": 4,
         "static_review_count": "500+ reviews",
         "unit_label": "bottle",
         "show_sku": true

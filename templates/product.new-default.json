@@ -407,7 +407,7 @@
       "type": "custom-liquid",
       "name": "t:names.custom_liquid",
       "settings": {
-        "custom_liquid": "<h5 style=\"margin:0; font-weight: 700\">DIRECTION OF USE</h5>\n\n<p>Take Sea Buckthorn Juice 20 to 25 ml with 100 ml lukewarm water in the early morning on an empty stomach, and take the same dose in the evening 30 minutes before dinner or 50 minutes after dinner.\nUse within 30 days of opening.<p>",
+        "custom_liquid": "<h5 style=\"margin:0; font-weight: 700 color: #666666\">DIRECTION OF USE</h5>\n\n<p style=\"margin:0; margin-top: 10px; font-weight: 400 color: #e5e5e5\">Take Sea Buckthorn Juice 20 to 25 ml with 100 ml lukewarm water in the early morning on an empty stomach, and take the same dose in the evening 30 minutes before dinner or 50 minutes after dinner.\nUse within 30 days of opening.<p>",
         "color_scheme": "",
         "section_width": "page-width",
         "padding-block-start": 0,

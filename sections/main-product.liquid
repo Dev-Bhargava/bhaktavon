@@ -177,6 +177,9 @@
         <hr class="pdp-divider">
       {%- endunless -%}
 
+      {%- comment -%} ── Description ── {%- endcomment -%}
+      {{ product.description }}
+
       {%- comment -%} ── Key Benefits (metafields or schema repeater) ── {%- endcomment -%}
       {%- if section.blocks.size > 0 -%}
         {%- assign benefit_blocks = section.blocks | where: 'type', 'benefit' -%}

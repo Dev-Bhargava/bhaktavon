@@ -178,7 +178,7 @@
       {%- endunless -%}
 
       {%- comment -%} ── Description ── {%- endcomment -%}
-      {{ product.description }}
+      <div class="pdp-desc">{{ product.description }}</div>
 
       {%- comment -%} ── Key Benefits (metafields or schema repeater) ── {%- endcomment -%}
       {%- if section.blocks.size > 0 -%}

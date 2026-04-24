@@ -7,6 +7,7 @@
 
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <div
+  {% if template.name == 'index' %}id="hp-faq {{ section.name }}"{% endif %}
   class="section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}"
   data-testid="ui-test-section"
 

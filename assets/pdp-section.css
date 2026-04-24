@@ -189,6 +189,9 @@
 }
 .pdp-variant-btn.is-sold-out { opacity:.45;cursor:not-allowed; }
 
+.pdp-desc{
+    margin-bottom: 20px
+}
 .pdp-desc h1,
 .pdp-desc h2,
 .pdp-desc h3,

@@ -121,8 +121,6 @@
         {%- render 'pdp-rating', rating: rating_value, count: rating_count -%}
       {%- endif -%}
 
-      <hr class="pdp-divider">
-
       {%- comment -%} ── Price ── {%- endcomment -%}
       <div class="pdp-price-block" id="PdpPrice-{{ section.id }}">
         {%- render 'pdp-price', variant: current_variant, product: product -%}

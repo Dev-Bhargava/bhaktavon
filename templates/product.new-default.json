@@ -283,29 +283,49 @@
         "benefit_AgxDfy": {
           "type": "benefit",
           "settings": {
+            "benefit_svg": "<svg viewbox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M12 8c-2.2 0-4 1.8-4 4s1.8 4 4 4\"></path><path d=\"M16 10c0 2.2-1.8 4-4 4\"></path></svg>",
             "benefit_text": "Boost Immunity",
-            "dot_color": "#e07b29"
+            "benefit_desc": "Hydration, elasticity &amp; natural radiance from within"
           }
         },
         "benefit_wVqRnH": {
           "type": "benefit",
           "settings": {
-            "benefit_text": "Gut Health",
-            "dot_color": "#2d7a44"
+            "benefit_svg": "",
+            "benefit_text": "Heart Health",
+            "benefit_desc": "Healthy blood pressure & cardiovascular wellness"
           }
         },
         "benefit_7hbmrN": {
           "type": "benefit",
           "settings": {
-            "benefit_text": "Skin Nourishment",
-            "dot_color": "#e07b29"
+            "benefit_svg": "",
+            "benefit_text": "Gut & Digestion",
+            "benefit_desc": "Digestive balance & liver support"
           }
         },
         "benefit_CpGaxd": {
           "type": "benefit",
           "settings": {
-            "benefit_text": "Heart Health",
-            "dot_color": "#2d7a44"
+            "benefit_svg": "",
+            "benefit_text": "Immune Defence",
+            "benefit_desc": "Antioxidants & bioavailable Vitamin C"
+          }
+        },
+        "benefit_kGNnVy": {
+          "type": "benefit",
+          "settings": {
+            "benefit_svg": "",
+            "benefit_text": "Sustained Energy",
+            "benefit_desc": "Cellular health for lasting vitality all day"
+          }
+        },
+        "benefit_XWF8dX": {
+          "type": "benefit",
+          "settings": {
+            "benefit_svg": "",
+            "benefit_text": "All 4 Omegas",
+            "benefit_desc": "Rare plant source of Ω3, Ω6, Ω7 & Ω9"
           }
         },
         "trust_badge_cA4AeH": {
@@ -338,6 +358,8 @@
         "benefit_wVqRnH",
         "benefit_7hbmrN",
         "benefit_CpGaxd",
+        "benefit_kGNnVy",
+        "benefit_XWF8dX",
         "trust_badge_cA4AeH",
         "trust_badge_R4bAch",
         "trust_badge_UqhiCU"

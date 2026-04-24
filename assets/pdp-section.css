@@ -195,11 +195,6 @@
 .pdp-benefit-item    { display:flex;align-items:center;gap:var(--pdp-sp2);font-size:var(--pdp-text-sm); }
 .pdp-benefit-dot     { width:8px;height:8px;border-radius:50%;flex-shrink:0; } */
 
-.benefits-section {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
   .benefits-heading {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(1.5rem, 2.5vw, 2.1rem);

@@ -291,7 +291,7 @@
         "benefit_wVqRnH": {
           "type": "benefit",
           "settings": {
-            "benefit_svg": "",
+            "benefit_svg": "<svg viewbox=\"0 0 24 24\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>",
             "benefit_text": "Heart Health",
             "benefit_desc": "Healthy blood pressure & cardiovascular wellness"
           }
@@ -299,7 +299,7 @@
         "benefit_7hbmrN": {
           "type": "benefit",
           "settings": {
-            "benefit_svg": "",
+            "benefit_svg": "<svg viewbox=\"0 0 24 24\"><path d=\"M12 2a5 5 0 0 1 5 5c0 5-5 11-5 11S7 12 7 7a5 5 0 0 1 5-5z\"></path><circle cx=\"12\" cy=\"7\" r=\"2\"></circle></svg>",
             "benefit_text": "Gut & Digestion",
             "benefit_desc": "Digestive balance & liver support"
           }
@@ -307,7 +307,7 @@
         "benefit_CpGaxd": {
           "type": "benefit",
           "settings": {
-            "benefit_svg": "",
+            "benefit_svg": "<svg viewbox=\"0 0 24 24\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"></path></svg>",
             "benefit_text": "Immune Defence",
             "benefit_desc": "Antioxidants & bioavailable Vitamin C"
           }
@@ -315,7 +315,7 @@
         "benefit_kGNnVy": {
           "type": "benefit",
           "settings": {
-            "benefit_svg": "",
+            "benefit_svg": "<svg viewbox=\"0 0 24 24\"><path d=\"M13 2L3 14h9l-1 8 10-12h-9l1-8z\"></path></svg>",
             "benefit_text": "Sustained Energy",
             "benefit_desc": "Cellular health for lasting vitality all day"
           }
@@ -323,9 +323,25 @@
         "benefit_XWF8dX": {
           "type": "benefit",
           "settings": {
-            "benefit_svg": "",
+            "benefit_svg": "<svg viewbox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M8 12h8M12 8v8\"></path></svg>",
             "benefit_text": "All 4 Omegas",
             "benefit_desc": "Rare plant source of Ω3, Ω6, Ω7 & Ω9"
+          }
+        },
+        "benefit_AgyN9P": {
+          "type": "benefit",
+          "settings": {
+            "benefit_svg": "<svg viewbox=\"0 0 24 24\"><path d=\"M22 12h-4l-3 9L9 3l-3 9H2\"></path></svg>",
+            "benefit_text": "Blood Sugar Balance",
+            "benefit_desc": "Healthy blood sugar as part of a balanced routine"
+          }
+        },
+        "benefit_WPGzDK": {
+          "type": "benefit",
+          "settings": {
+            "benefit_svg": "<svg viewbox=\"0 0 24 24\"><path d=\"M12 22V12M12 12C12 7 7 2 7 2s0 5 5 10zM12 12c0-5 5-10 5-10s0 5-5 10z\"></path></svg>",
+            "benefit_text": "Hormonal Harmony",
+            "benefit_desc": "Natural hormonal balance, especially in women"
           }
         },
         "trust_badge_cA4AeH": {
@@ -360,6 +376,8 @@
         "benefit_CpGaxd",
         "benefit_kGNnVy",
         "benefit_XWF8dX",
+        "benefit_AgyN9P",
+        "benefit_WPGzDK",
         "trust_badge_cA4AeH",
         "trust_badge_R4bAch",
         "trust_badge_UqhiCU"

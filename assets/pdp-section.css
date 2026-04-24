@@ -189,6 +189,16 @@
 }
 .pdp-variant-btn.is-sold-out { opacity:.45;cursor:not-allowed; }
 
+.pdp-desc h1,
+.pdp-desc h2,
+.pdp-desc h3,
+.pdp-desc h4,
+.pdp-desc h5,
+.pdp-desc h6,
+.pdp-desc p,{
+    margin: 0;
+}
+
 /* Benefits */
 /* .pdp-benefits__label { font-size:var(--pdp-text-sm);font-weight:700;margin-bottom:var(--pdp-sp3); }
 .pdp-benefits__grid  { display:grid;grid-template-columns:1fr 1fr;gap:var(--pdp-sp2) var(--pdp-sp4);list-style:none;padding:0; }

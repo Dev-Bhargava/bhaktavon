@@ -1,4 +1,3 @@
-
 {%- comment -%}
   Section: main-product.liquid
   Theme:   Shopify Horizon
@@ -15,8 +14,8 @@
 {%- endcomment -%}
 
 {%- liquid
-  assign current_variant   = product.selected_or_first_available_variant
-  assign product_form_id   = 'product-form-' | append: section.id
+  assign current_variant = product.selected_or_first_available_variant
+  assign product_form_id = 'product-form-' | append: section.id
   assign has_selling_plans = false
   if product.selling_plan_groups.size > 0
     assign has_selling_plans = true
@@ -29,7 +28,6 @@
   data-product-id="{{ product.id }}"
   data-url="{{ product.url }}"
 >
-
   {%- comment -%} ── BREADCRUMB ── {%- endcomment -%}
   <nav class="pdp-breadcrumb" aria-label="Breadcrumb">
     <a href="{{ routes.root_url }}">Home</a>
@@ -45,10 +43,8 @@
   </nav>
 
   <div class="pdp-layout">
-
     {%- comment -%} ══════════════ GALLERY ══════════════ {%- endcomment -%}
     <div class="pdp-gallery" role="region" aria-label="{{ 'products.product.media.gallery_viewer' | t }}">
-
       {%- comment -%} Main image {%- endcomment -%}
       <div class="pdp-gallery__main" id="GalleryMain-{{ section.id }}">
         {%- if product.featured_media -%}
@@ -96,14 +92,11 @@
           {%- endfor -%}
         </div>
       {%- endif -%}
-
     </div>
     {%- comment -%} /gallery {%- endcomment -%}
 
-
     {%- comment -%} ══════════════ PRODUCT INFO ══════════════ {%- endcomment -%}
     <div class="pdp-info">
-
       {%- comment -%} ── Badges ── {%- endcomment -%}
       <div class="pdp-badges">
         {%- if section.settings.badge_bestseller != blank -%}
@@ -121,14 +114,11 @@
 
       {%- comment -%} ── Rating (metafield-driven) ── {%- endcomment -%}
       {%- liquid
-        assign rating_value = section.settings.static_rating | default: nil
-        assign rating_count = section.settings.static_review_count | default: nil
+        assign rating_value = section.settings.static_rating | default: null
+        assign rating_count = section.settings.static_review_count | default: null
       -%}
-      {%- if rating_value != nil or section.settings.show_static_rating -%}
-        {%- render 'pdp-rating',
-          rating: rating_value,
-          count: rating_count
-        -%}
+      {%- if rating_value != null or section.settings.show_static_rating -%}
+        {%- render 'pdp-rating', rating: rating_value, count: rating_count -%}
       {%- endif -%}
 
       <hr class="pdp-divider">
@@ -162,7 +152,7 @@
                     assign variant_for_value = product.variants | where: 'option3', value | first
                   endif
                   assign is_selected = false
-                  if current_variant[option.position ] == value
+                  if current_variant[option.position] == value
                     assign is_selected = true
                   endif
                 -%}
@@ -171,10 +161,14 @@
                   data-value="{{ value | escape }}"
                   data-option-index="{{ forloop.parentloop.index0 }}"
                   aria-pressed="{{ is_selected }}"
-                  {% unless variant_for_value.available %}aria-disabled="true"{% endunless %}
+                  {% unless variant_for_value.available %}
+                    aria-disabled="true"
+                  {% endunless %}
                 >
                   {{ value }}
-                  {%- unless variant_for_value.available -%}<span class="sr-only"> (sold out)</span>{%- endunless -%}
+                  {%- unless variant_for_value.available -%}
+                    <span class="sr-only"> (sold out)</span>
+                  {%- endunless -%}
                 </button>
               {%- endfor -%}
             </div>
@@ -187,20 +181,19 @@
       {%- if section.blocks.size > 0 -%}
         {%- assign benefit_blocks = section.blocks | where: 'type', 'benefit' -%}
         {%- if benefit_blocks.size > 0 -%}
-          <div class="pdp-benefits">
+          <div class="benefits-section">
             <p class="pdp-benefits__label">Key Benefits:</p>
-            <ul class="pdp-benefits__grid">
+            <div class="benefits-grid">
               {%- for block in benefit_blocks -%}
-                <li class="pdp-benefit-item" {{ block.shopify_attributes }}>
-                  <span
-                    class="pdp-benefit-dot"
-                    style="background:{{ block.settings.dot_color }}"
-                    aria-hidden="true"
-                  ></span>
-                  {{ block.settings.benefit_text }}
-                </li>
+                <div class="benefit-tile">
+                  <div class="benefit-icon">
+                    {{ block.settings.benefit_svg }}
+                  </div>
+                  <div class="benefit-title">{{ block.settings.benefit_text }}</div>
+                  <div class="benefit-desc">{{ block.settings.benefit_desc }}</div>
+                </div>
               {%- endfor -%}
-            </ul>
+            </div>
           </div>
         {%- endif -%}
       {%- endif -%}
@@ -210,7 +203,6 @@
         <div class="pdp-purchase-options">
           <p class="pdp-purchase-options__label">Purchase Options:</p>
           <div class="pdp-po-list" role="radiogroup" aria-label="Purchase options">
-
             {%- comment -%} One-time option {%- endcomment -%}
             <label class="pdp-po-card is-selected" id="PO-onetime-{{ section.id }}">
               <input
@@ -235,7 +227,7 @@
               {%- assign first_plan = group.selling_plans | first -%}
               {%- for plan in group.selling_plans limit: 1 -%}
                 {%- liquid
-                  assign plan_price_adj = nil
+                  assign plan_price_adj = null
                   for adj in plan.price_adjustments
                     assign plan_price_adj = adj
                   endfor
@@ -265,7 +257,8 @@
                       {%- if save_pct > 0 -%}
                         {%- assign discounted = current_variant.price | times: save_pct | divided_by: 100 -%}
                         {%- assign final_price = current_variant.price | minus: discounted -%}
-                        {{ final_price | money }} per {{ section.settings.unit_label | default: 'bottle' }} &middot; {{ plan.name }}
+                        {{ final_price | money }} per {{ section.settings.unit_label | default: 'bottle' }} &middot;
+                        {{ plan.name }}
                       {%- else -%}
                         {{ current_variant.price | money }} &middot; {{ plan.name }}
                       {%- endif -%}
@@ -275,13 +268,13 @@
                 </label>
               {%- endfor -%}
             {%- endfor -%}
-
           </div>
         </div>
       {%- endif -%}
 
       {%- comment -%} ── Product Form ── {%- endcomment -%}
-      {%- form 'product', product,
+      {%- form 'product',
+        product,
         id: product_form_id,
         class: 'pdp-product-form',
         novalidate: true,
@@ -301,7 +294,9 @@
               class="pdp-qty__btn"
               data-action="minus"
               aria-label="{{ 'products.product.quantity.decrease' | t }}"
-            >&#8722;</button>
+            >
+              &#8722;
+            </button>
             <input
               class="pdp-qty__input"
               type="number"
@@ -316,16 +311,32 @@
               class="pdp-qty__btn"
               data-action="plus"
               aria-label="{{ 'products.product.quantity.increase' | t }}"
-            >+</button>
+            >
+              +
+            </button>
           </div>
 
           <button
             type="submit"
             class="pdp-btn-atc"
             id="AtcBtn-{{ section.id }}"
-            {% unless current_variant.available %}disabled{% endunless %}
+            {% unless current_variant.available %}
+              disabled
+            {% endunless %}
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            </svg>
             <span class="pdp-btn-atc__text">
               {%- if current_variant.available -%}
                 {{ 'products.product.add_to_cart' | t }}
@@ -334,14 +345,15 @@
               {%- endif -%}
             </span>
             <span class="pdp-btn-atc__spinner" aria-hidden="true" hidden>
-              <svg class="pdp-spinner" viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="60" stroke-linecap="round"/></svg>
+              <svg class="pdp-spinner" viewBox="0 0 24 24" width="18" height="18">
+                <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="60" stroke-linecap="round"/>
+              </svg>
             </span>
           </button>
         </div>
 
         {%- comment -%} Error message {%- endcomment -%}
         <p class="pdp-form-error" id="AtcError-{{ section.id }}" role="alert" hidden></p>
-
       {%- endform -%}
 
       {%- comment -%} ── Save & Share ── {%- endcomment -%}
@@ -354,7 +366,20 @@
           aria-label="Save to wishlist"
           aria-pressed="false"
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="pdp-heart-icon"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            class="pdp-heart-icon"
+          >
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
           Save
         </button>
         <button
@@ -364,7 +389,19 @@
           data-share-url="{{ shop.url }}{{ product.url }}"
           aria-label="Share this product"
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+          </svg>
           Share
         </button>
       </div>
@@ -387,13 +424,10 @@
           {%- endfor -%}
         </div>
       {%- endif -%}
-
     </div>
     {%- comment -%} /pdp-info {%- endcomment -%}
-
   </div>
   {%- comment -%} /pdp-layout {%- endcomment -%}
-
 </div>
 {%- comment -%} /pdp-section {%- endcomment -%}
 
@@ -512,17 +546,23 @@
       "limit": 6,
       "settings": [
         {
+          "type": "html",
+          "id": "benefit_svg",
+          "label": "Benefit text",
+          "default": "Boost Immunity"
+        },
+        {
           "type": "text",
           "id": "benefit_text",
           "label": "Benefit text",
           "default": "Boost Immunity"
         },
         {
-          "type": "color",
-          "id": "dot_color",
-          "label": "Dot colour",
-          "default": "#e07b29"
-        }
+          "type": "text",
+          "id": "benefit_desc",
+          "label": "Benefit Desc",
+          "default": "Skin Nourishment"
+        },
       ]
     },
     {
@@ -541,10 +581,10 @@
           "id": "icon_preset",
           "label": "Icon preset",
           "options": [
-            { "value": "truck",   "label": "Truck (Shipping)" },
-            { "value": "shield",  "label": "Shield (Quality)" },
+            { "value": "truck", "label": "Truck (Shipping)" },
+            { "value": "shield", "label": "Shield (Quality)" },
             { "value": "refresh", "label": "Refresh (Returns)" },
-            { "value": "lock",    "label": "Lock (Secure)" }
+            { "value": "lock", "label": "Lock (Secure)" }
           ],
           "default": "truck"
         },
@@ -560,13 +600,50 @@
     {
       "name": "Sea Buckthorn PDP",
       "blocks": [
-        { "type": "benefit", "settings": { "benefit_text": "Boost Immunity",    "dot_color": "#e07b29" } },
-        { "type": "benefit", "settings": { "benefit_text": "Gut Health",        "dot_color": "#2d7a44" } },
-        { "type": "benefit", "settings": { "benefit_text": "Skin Nourishment",  "dot_color": "#e07b29" } },
-        { "type": "benefit", "settings": { "benefit_text": "Heart Health",      "dot_color": "#2d7a44" } },
-        { "type": "trust_badge", "settings": { "label": "Free Shipping",   "icon_preset": "truck"   } },
-        { "type": "trust_badge", "settings": { "label": "Quality Assured", "icon_preset": "shield"  } },
-        { "type": "trust_badge", "settings": { "label": "Easy Returns",    "icon_preset": "refresh" } }
+        { "type": "benefit", "settings": { 
+            "benefit_svg": "",
+            "benefit_text": "Skin Nourishment",
+            "benefit_desc": "Hydration, elasticity &amp; natural radiance from within"
+        } },
+        { "type": "benefit", "settings": { 
+            "benefit_svg": "",
+            "benefit_text": "Heart Health",
+            "benefit_desc": "Healthy blood pressure &amp; cardiovascular wellness"
+        } },
+        { "type": "benefit", "settings": { 
+            "benefit_svg": "",
+            "benefit_text": "Gut &amp; Digestion",
+            "benefit_desc": "Digestive balance &amp; liver support"
+        } },
+        { "type": "benefit", "settings": { 
+            "benefit_svg": "",
+            "benefit_text": "Immune Defence",
+            "benefit_desc": "Antioxidants &amp; bioavailable Vitamin C"
+        } },
+        { "type": "benefit", "settings": { 
+            "benefit_svg": "",
+            "benefit_text": "Sustained Energy",
+            "benefit_desc": "Cellular health for lasting vitality all day"
+        } },
+        { "type": "benefit", "settings": { 
+            "benefit_svg": "",
+            "benefit_text": "All 4 Omegas",
+            "benefit_desc": "Rare plant source of Ω3, Ω6, Ω7 &amp; Ω9"
+        } },
+        { "type": "benefit", "settings": { 
+            "benefit_svg": "",
+            "benefit_text": "Blood Sugar Balance",
+            "benefit_desc": "Healthy blood sugar as part of a balanced routine"
+        } },
+        { "type": "benefit", "settings": { 
+            "benefit_svg": "",
+            "benefit_text": "Hormonal Harmony",
+            "benefit_desc": "Natural hormonal balance, especially in women"
+        } },
+        
+        { "type": "trust_badge", "settings": { "label": "Free Shipping", "icon_preset": "truck" } },
+        { "type": "trust_badge", "settings": { "label": "Quality Assured", "icon_preset": "shield" } },
+        { "type": "trust_badge", "settings": { "label": "Easy Returns", "icon_preset": "refresh" } }
       ]
     }
   ]

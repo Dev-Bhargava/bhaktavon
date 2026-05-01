@@ -113,13 +113,13 @@
       <h1 class="pdp-title">{{ product.title }}</h1>
 
       {%- comment -%} ── Rating (metafield-driven) ── {%- endcomment -%}
-      {%- liquid
+      {% comment %} {%- liquid
         assign rating_value = section.settings.static_rating | default: null
         assign rating_count = section.settings.static_review_count | default: null
       -%}
       {%- if rating_value != null or section.settings.show_static_rating -%}
         {%- render 'pdp-rating', rating: rating_value, count: rating_count -%}
-      {%- endif -%}
+      {%- endif -%} {% endcomment %}
 
       {%- comment -%} ── Price ── {%- endcomment -%}
       <div class="pdp-price-block" id="PdpPrice-{{ section.id }}">

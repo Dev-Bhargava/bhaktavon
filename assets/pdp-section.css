@@ -415,8 +415,8 @@
 @media(max-width:900px){
   .pdp-layout { grid-template-columns:1fr;gap:var(--pdp-sp8); }
   .pdp-gallery { position:static; }
-  .pdp-atc-row {position: fixed;bottom: 0;left: 0;width: 100%;background-color: white;z-index: 9;padding: 20px;box-shadow: 2px -4px 20px #00000017;border-top: 1px solid #dadada;
-  }
+  .pdp-atc-row {position: fixed;bottom: 0;left: 0;width: 100%;background-color: white;z-index: 9;padding: 20px;box-shadow: 2px -4px 20px #00000017;border-top: 1px solid #dadada; justify-content: center;}
+  .pdp-btn-atc {max-width: 620px;}
 }
 @media(max-width:600px){
   .pdp-layout { padding:var(--pdp-sp6) var(--pdp-sp4); }

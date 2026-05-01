@@ -385,7 +385,7 @@
       "name": "Sea Buckthorn PDP",
       "settings": {
         "badge_bestseller": "Best Seller",
-        "show_static_rating": true,
+        "show_static_rating": false,
         "static_rating": 5,
         "static_review_count": "500+ reviews",
         "unit_label": "bottle",

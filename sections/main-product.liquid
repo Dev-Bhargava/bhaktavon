@@ -173,104 +173,6 @@
         <hr class="pdp-divider">
       {%- endunless -%}
 
-      {%- comment -%} ── Description ── {%- endcomment -%}
-      <div class="pdp-desc">{{ product.description }}</div>
-
-      {%- comment -%} ── Key Benefits (metafields or schema repeater) ── {%- endcomment -%}
-      {%- if section.blocks.size > 0 -%}
-        {%- assign benefit_blocks = section.blocks | where: 'type', 'benefit' -%}
-        {%- if benefit_blocks.size > 0 -%}
-          <div class="benefits-section">
-            <p class="pdp-benefits__label">Key Benefits:</p>
-            <div class="benefits-grid">
-              {%- for block in benefit_blocks -%}
-                <div class="benefit-tile">
-                  <div class="benefit-icon">
-                    {{ block.settings.benefit_svg }}
-                  </div>
-                  <div class="benefit-title">{{ block.settings.benefit_text }}</div>
-                  <div class="benefit-desc">{{ block.settings.benefit_desc }}</div>
-                </div>
-              {%- endfor -%}
-            </div>
-          </div>
-        {%- endif -%}
-      {%- endif -%}
-
-      {%- comment -%} ── Purchase Options (Selling Plans) ── {%- endcomment -%}
-      {%- if has_selling_plans -%}
-        <div class="pdp-purchase-options">
-          <p class="pdp-purchase-options__label">Purchase Options:</p>
-          <div class="pdp-po-list" role="radiogroup" aria-label="Purchase options">
-            {%- comment -%} One-time option {%- endcomment -%}
-            <label class="pdp-po-card is-selected" id="PO-onetime-{{ section.id }}">
-              <input
-                class="sr-only"
-                type="radio"
-                name="purchase-option-{{ section.id }}"
-                value="onetime"
-                checked
-                aria-checked="true"
-              >
-              <div class="pdp-po-card__body">
-                <div class="pdp-po-card__title">One-time Purchase</div>
-                <div class="pdp-po-card__sub">
-                  {{ current_variant.price | money }} per {{ section.settings.unit_label | default: 'bottle' }}
-                </div>
-              </div>
-              <span class="pdp-po-radio" aria-hidden="true"></span>
-            </label>
-
-            {%- comment -%} Selling plan groups {%- endcomment -%}
-            {%- for group in product.selling_plan_groups -%}
-              {%- assign first_plan = group.selling_plans | first -%}
-              {%- for plan in group.selling_plans limit: 1 -%}
-                {%- liquid
-                  assign plan_price_adj = null
-                  for adj in plan.price_adjustments
-                    assign plan_price_adj = adj
-                  endfor
-                  assign save_pct = 0
-                  if plan_price_adj.value_type == 'percentage'
-                    assign save_pct = plan_price_adj.value
-                  endif
-                -%}
-                <label
-                  class="pdp-po-card"
-                  id="PO-plan-{{ plan.id }}-{{ section.id }}"
-                  data-selling-plan-id="{{ plan.id }}"
-                >
-                  {%- if save_pct > 0 -%}
-                    <span class="pdp-po-savetag">Save {{ save_pct }}%</span>
-                  {%- endif -%}
-                  <input
-                    class="sr-only"
-                    type="radio"
-                    name="purchase-option-{{ section.id }}"
-                    value="{{ plan.id }}"
-                    aria-checked="false"
-                  >
-                  <div class="pdp-po-card__body">
-                    <div class="pdp-po-card__title">{{ group.name }}</div>
-                    <div class="pdp-po-card__sub">
-                      {%- if save_pct > 0 -%}
-                        {%- assign discounted = current_variant.price | times: save_pct | divided_by: 100 -%}
-                        {%- assign final_price = current_variant.price | minus: discounted -%}
-                        {{ final_price | money }} per {{ section.settings.unit_label | default: 'bottle' }} &middot;
-                        {{ plan.name }}
-                      {%- else -%}
-                        {{ current_variant.price | money }} &middot; {{ plan.name }}
-                      {%- endif -%}
-                    </div>
-                  </div>
-                  <span class="pdp-po-radio" aria-hidden="true"></span>
-                </label>
-              {%- endfor -%}
-            {%- endfor -%}
-          </div>
-        </div>
-      {%- endif -%}
-
       {%- comment -%} ── Product Form ── {%- endcomment -%}
       {%- form 'product',
         product,
@@ -404,6 +306,104 @@
           Share
         </button>
       </div>
+
+      {%- comment -%} ── Description ── {%- endcomment -%}
+      <div class="pdp-desc">{{ product.description }}</div>
+
+      {%- comment -%} ── Key Benefits (metafields or schema repeater) ── {%- endcomment -%}
+      {%- if section.blocks.size > 0 -%}
+        {%- assign benefit_blocks = section.blocks | where: 'type', 'benefit' -%}
+        {%- if benefit_blocks.size > 0 -%}
+          <div class="benefits-section">
+            <p class="pdp-benefits__label">Key Benefits:</p>
+            <div class="benefits-grid">
+              {%- for block in benefit_blocks -%}
+                <div class="benefit-tile">
+                  <div class="benefit-icon">
+                    {{ block.settings.benefit_svg }}
+                  </div>
+                  <div class="benefit-title">{{ block.settings.benefit_text }}</div>
+                  <div class="benefit-desc">{{ block.settings.benefit_desc }}</div>
+                </div>
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+
+      {%- comment -%} ── Purchase Options (Selling Plans) ── {%- endcomment -%}
+      {%- if has_selling_plans -%}
+        <div class="pdp-purchase-options">
+          <p class="pdp-purchase-options__label">Purchase Options:</p>
+          <div class="pdp-po-list" role="radiogroup" aria-label="Purchase options">
+            {%- comment -%} One-time option {%- endcomment -%}
+            <label class="pdp-po-card is-selected" id="PO-onetime-{{ section.id }}">
+              <input
+                class="sr-only"
+                type="radio"
+                name="purchase-option-{{ section.id }}"
+                value="onetime"
+                checked
+                aria-checked="true"
+              >
+              <div class="pdp-po-card__body">
+                <div class="pdp-po-card__title">One-time Purchase</div>
+                <div class="pdp-po-card__sub">
+                  {{ current_variant.price | money }} per {{ section.settings.unit_label | default: 'bottle' }}
+                </div>
+              </div>
+              <span class="pdp-po-radio" aria-hidden="true"></span>
+            </label>
+
+            {%- comment -%} Selling plan groups {%- endcomment -%}
+            {%- for group in product.selling_plan_groups -%}
+              {%- assign first_plan = group.selling_plans | first -%}
+              {%- for plan in group.selling_plans limit: 1 -%}
+                {%- liquid
+                  assign plan_price_adj = null
+                  for adj in plan.price_adjustments
+                    assign plan_price_adj = adj
+                  endfor
+                  assign save_pct = 0
+                  if plan_price_adj.value_type == 'percentage'
+                    assign save_pct = plan_price_adj.value
+                  endif
+                -%}
+                <label
+                  class="pdp-po-card"
+                  id="PO-plan-{{ plan.id }}-{{ section.id }}"
+                  data-selling-plan-id="{{ plan.id }}"
+                >
+                  {%- if save_pct > 0 -%}
+                    <span class="pdp-po-savetag">Save {{ save_pct }}%</span>
+                  {%- endif -%}
+                  <input
+                    class="sr-only"
+                    type="radio"
+                    name="purchase-option-{{ section.id }}"
+                    value="{{ plan.id }}"
+                    aria-checked="false"
+                  >
+                  <div class="pdp-po-card__body">
+                    <div class="pdp-po-card__title">{{ group.name }}</div>
+                    <div class="pdp-po-card__sub">
+                      {%- if save_pct > 0 -%}
+                        {%- assign discounted = current_variant.price | times: save_pct | divided_by: 100 -%}
+                        {%- assign final_price = current_variant.price | minus: discounted -%}
+                        {{ final_price | money }} per {{ section.settings.unit_label | default: 'bottle' }} &middot;
+                        {{ plan.name }}
+                      {%- else -%}
+                        {{ current_variant.price | money }} &middot; {{ plan.name }}
+                      {%- endif -%}
+                    </div>
+                  </div>
+                  <span class="pdp-po-radio" aria-hidden="true"></span>
+                </label>
+              {%- endfor -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
 
       {%- comment -%} ── Trust Badges ── {%- endcomment -%}
       {%- assign trust_blocks = section.blocks | where: 'type', 'trust_badge' -%}

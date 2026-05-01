@@ -57,7 +57,9 @@
     <div class="rating-number">
     {{ rating }}
     </div> 
-    <div class="divider"></div>
+    {% if count != blank %}
+      <div class="divider"></div>
+    {% endif %}
     <div class="rating-text">{{ count }}</div>
 </div>
 </div>

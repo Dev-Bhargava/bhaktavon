@@ -191,7 +191,7 @@
           "settings": {
             "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-clock w-7 h-7 text-[#FF8C42]\" data-fg-med18=\"1.20:1.4348:/src/app/components/HowToUse.tsx:52:21:2131:43:e:Icon\" data-fgid-med18=\":r64:\">\n                            <circle cx=\"12\" cy=\"12\" r=\"10\"></circle>\n                            <polyline points=\"12 6 12 12 16 14\"></polyline>\n                          </svg>",
             "title": "Best Time",
-            "text": "<strong>Morning or before meals</strong> \n<br>\nConsistent daily use yields the best results. Store in refrigerator after opening."
+            "text": "<strong>Morning</strong> \n<br>\nConsistent daily use yields the best results. Store in refrigerator after opening."
           }
         }
       },
@@ -226,7 +226,7 @@
         "stat_L8fVyQ": {
           "type": "stat",
           "settings": {
-            "stat": "2-4°C",
+            "stat": "5-6°C",
             "label": "Storage temperature"
           }
         }
